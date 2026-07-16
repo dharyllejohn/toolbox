@@ -3,33 +3,50 @@
 
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
   </url>
 
   <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/pages/about.html</loc>
+    <loc>https://toolbox-wheat-seven.vercel.app/auth.html</loc>
+    <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/pages/contact.html</loc>
+    <loc>https://toolbox-wheat-seven.vercel.app/dashboard.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/admin.html</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/about.html</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/pages/privacy-policy.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://toolbox-wheat-seven.vercel.app/contact.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/pages/terms.html</loc>
+    <loc>https://toolbox-wheat-seven.vercel.app/privacy-policy.html</loc>
+    <priority>0.8</priority>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/terms.html</loc>
+    <priority>0.8</priority>
+    <changefreq>yearly</changefreq>
   </url>
 
 </urlset>
