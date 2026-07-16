@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Audio Merger | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px 0;
+flex-wrap:wrap;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+audio{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+font-weight:bold;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🎼 Audio Merger</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Merge Audio Files</h2>
+
+<p>Select multiple audio files to combine.</p>
+
+<input type="file" id="files" multiple accept="audio/*">
+
+<div class="controls">
+
+<button id="mergeBtn">
+
+🎼 Merge Audio
+
+</button>
+
+</div>
+
+<p id="status">Ready</p>
+
+<audio id="player" controls></audio>
+
+<br><br>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download Merged Audio
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+const mergeBtn=document.getElementById("mergeBtn");
+const status=document.getElementById("status");
+const player=document.getElementById("player");
+const download=document.getElementById("download");
+
+mergeBtn.onclick=async()=>{
+
+const files=document.getElementById("files").files;
+
+if(files.length<2){
+
+alert("Select at least two audio files.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+let list="";
+
+for(let i=0;i<files.length;i++){
+
+const ext=files[i].name.split(".").pop();
+
+await ffmpeg.writeFile("audio"+i+"."+ext,await fetchFile(files[i]));
+
+list+="file 'audio"+i+"."+ext+"'\n";
+
+}
+
+await ffmpeg.writeFile("list.txt",new TextEncoder().encode(list));
+
+status.innerHTML="Merging...";
+
+await ffmpeg.exec([
+"-f","concat",
+"-safe","0",
+"-i","list.txt",
+"-c","copy",
+"merged.mp3"
+]);
+
+const data=await ffmpeg.readFile("merged.mp3");
+
+const blob=new Blob([data.buffer],{type:"audio/mp3"});
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="merged.mp3";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+};
+
+</script>
+
+</body>
+</html>

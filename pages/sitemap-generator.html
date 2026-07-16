@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sitemap Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🗺️ Sitemap Generator</h1>
+
+<p>Create a valid XML sitemap for your website.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Website URL</label>
+<input
+type="text"
+id="website"
+placeholder="https://example.com">
+
+<label>Page URL</label>
+<input
+type="text"
+id="pageUrl"
+placeholder="/about">
+
+<label>Priority</label>
+<select id="priority">
+<option>1.0</option>
+<option>0.9</option>
+<option selected>0.8</option>
+<option>0.7</option>
+<option>0.6</option>
+<option>0.5</option>
+</select>
+
+<label>Change Frequency</label>
+<select id="changefreq">
+<option>always</option>
+<option>hourly</option>
+<option>daily</option>
+<option selected>weekly</option>
+<option>monthly</option>
+<option>yearly</option>
+<option>never</option>
+</select>
+
+<div class="button-group">
+
+<button id="addBtn" class="primary-btn">
+➕ Add Page
+</button>
+
+<button id="generateBtn" class="primary-btn">
+⚡ Generate Sitemap
+</button>
+
+</div>
+
+<div id="pageList" class="result-box"></div>
+
+<label>Generated sitemap.xml</label>
+
+<textarea
+id="output"
+rows="18"
+readonly>
+</textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download XML
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/sitemap-generator.js"></script>
+
+</body>
+</html>

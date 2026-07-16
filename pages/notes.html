@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notes | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+textarea{
+
+width:100%;
+height:220px;
+padding:15px;
+font-size:16px;
+border:none;
+border-radius:10px;
+resize:vertical;
+
+}
+
+.controls{
+
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin:20px 0;
+
+}
+
+button{
+
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+
+}
+
+input{
+
+width:100%;
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:10px;
+margin-bottom:20px;
+
+}
+
+.note{
+
+padding:15px;
+margin-top:15px;
+border-radius:10px;
+background:rgba(255,255,255,.08);
+white-space:pre-wrap;
+word-break:break-word;
+
+}
+
+.actions{
+
+margin-top:10px;
+display:flex;
+gap:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📝 Notes</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Quick Notes</h2>
+
+<p>Create and save notes in your browser.</p>
+
+<input
+type="text"
+id="search"
+placeholder="Search notes...">
+
+<textarea
+id="noteText"
+placeholder="Write your note here..."></textarea>
+
+<div class="controls">
+
+<button id="saveBtn">
+
+💾 Save Note
+
+</button>
+
+<button id="clearBtn">
+
+🗑 Clear
+
+</button>
+
+</div>
+
+<div id="notesList"></div>
+
+</main>
+
+<script>
+
+let notes=JSON.parse(localStorage.getItem("tb_notes"))||[];
+
+let editIndex=-1;
+
+const noteText=document.getElementById("noteText");
+const notesList=document.getElementById("notesList");
+const search=document.getElementById("search");
+
+function render(){
+
+notesList.innerHTML="";
+
+const keyword=search.value.toLowerCase();
+
+notes.forEach((note,index)=>{
+
+if(!note.toLowerCase().includes(keyword)) return;
+
+notesList.innerHTML+=`
+
+<div class="note">
+
+${note}
+
+<div class="actions">
+
+<button onclick="editNote(${index})">
+
+✏ Edit
+
+</button>
+
+<button onclick="deleteNote(${index})">
+
+🗑 Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function save(){
+
+const text=noteText.value.trim();
+
+if(text===""){
+
+alert("Write a note first.");
+
+return;
+
+}
+
+if(editIndex==-1){
+
+notes.unshift(text);
+
+}else{
+
+notes[editIndex]=text;
+
+editIndex=-1;
+
+saveBtn.innerHTML="💾 Save Note";
+
+}
+
+localStorage.setItem("tb_notes",JSON.stringify(notes));
+
+noteText.value="";
+
+render();
+
+}
+
+function editNote(i){
+
+noteText.value=notes[i];
+
+editIndex=i;
+
+saveBtn.innerHTML="✔ Update Note";
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
+function deleteNote(i){
+
+if(confirm("Delete this note?")){
+
+notes.splice(i,1);
+
+localStorage.setItem("tb_notes",JSON.stringify(notes));
+
+render();
+
+}
+
+}
+
+saveBtn.onclick=save;
+
+clearBtn.onclick=()=>{
+
+noteText.value="";
+
+editIndex=-1;
+
+saveBtn.innerHTML="💾 Save Note";
+
+};
+
+search.oninput=render;
+
+render();
+
+</script>
+
+</body>
+</html>

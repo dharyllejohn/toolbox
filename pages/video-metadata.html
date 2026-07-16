@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Media Metadata Viewer | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+video,audio{
+width:100%;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📋 Media Metadata Viewer</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Media Information</h2>
+
+<p>View basic metadata of audio and video files.</p>
+
+<input
+type="file"
+id="media"
+accept="audio/*,video/*">
+
+<video
+id="video"
+controls
+style="display:none">
+</video>
+
+<audio
+id="audio"
+controls
+style="display:none">
+</audio>
+
+<table>
+
+<tr>
+
+<td><b>Name</b></td>
+
+<td id="name">-</td>
+
+</tr>
+
+<tr>
+
+<td><b>Type</b></td>
+
+<td id="type">-</td>
+
+</tr>
+
+<tr>
+
+<td><b>Size</b></td>
+
+<td id="size">-</td>
+
+</tr>
+
+<tr>
+
+<td><b>Duration</b></td>
+
+<td id="duration">-</td>
+
+</tr>
+
+<tr>
+
+<td><b>Resolution</b></td>
+
+<td id="resolution">-</td>
+
+</tr>
+
+</table>
+
+</main>
+
+<script>
+
+media.onchange=()=>{
+
+const file=media.files[0];
+
+if(!file)return;
+
+name.textContent=file.name;
+
+type.textContent=file.type;
+
+size.textContent=(file.size/1024/1024).toFixed(2)+" MB";
+
+const url=URL.createObjectURL(file);
+
+if(file.type.startsWith("video")){
+
+video.style.display="block";
+
+audio.style.display="none";
+
+video.src=url;
+
+video.onloadedmetadata=()=>{
+
+duration.textContent=video.duration.toFixed(2)+" sec";
+
+resolution.textContent=video.videoWidth+" × "+video.videoHeight;
+
+};
+
+}else{
+
+audio.style.display="block";
+
+video.style.display="none";
+
+audio.src=url;
+
+audio.onloadedmetadata=()=>{
+
+duration.textContent=audio.duration.toFixed(2)+" sec";
+
+resolution.textContent="N/A";
+
+};
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

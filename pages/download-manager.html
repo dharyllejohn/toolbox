@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Download Manager | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+input{
+width:100%;
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:10px;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+table{
+width:100%;
+margin-top:30px;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+text-align:left;
+border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+a{
+color:#4fc3f7;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📥 Download Manager</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Manage Download Links</h2>
+
+<p>Save download URLs for quick access.</p>
+
+<input
+type="url"
+id="url"
+placeholder="https://example.com/file.zip">
+
+<button onclick="addDownload()">
+
+➕ Add Download
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Download Link</th>
+
+<th>Open</th>
+
+</tr>
+
+</thead>
+
+<tbody id="list"></tbody>
+
+</table>
+
+</main>
+
+<script>
+
+let downloads=JSON.parse(localStorage.getItem("downloads"))||[];
+
+function render(){
+
+list.innerHTML="";
+
+downloads.forEach((item,index)=>{
+
+list.innerHTML+=`
+
+<tr>
+
+<td>${index+1}</td>
+
+<td>${item}</td>
+
+<td>
+
+<a href="${item}" target="_blank">
+
+Open
+
+</a>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+function addDownload(){
+
+const link=url.value.trim();
+
+if(link===""){
+
+alert("Enter a valid URL.");
+
+return;
+
+}
+
+downloads.push(link);
+
+localStorage.setItem("downloads",JSON.stringify(downloads));
+
+url.value="";
+
+render();
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>

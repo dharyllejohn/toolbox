@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Regex Tester | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../guard.js"></script>
+
+<style>
+.tool-box{
+max-width:1100px;
+margin:40px auto;
+}
+
+textarea,input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+font-family:monospace;
+}
+
+textarea{
+height:180px;
+resize:vertical;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin:15px 0;
+}
+
+button{
+padding:10px 18px;
+cursor:pointer;
+border:none;
+border-radius:8px;
+background:#0077ff;
+color:#fff;
+font-weight:600;
+}
+
+#result{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+background:#f4f4f4;
+white-space:pre-wrap;
+font-family:monospace;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="tool-box">
+
+<h1>🧩 Regex Tester</h1>
+
+<input
+id="pattern"
+placeholder="Regex Pattern (example: ^[a-z]+$)"
+>
+
+<input
+id="flags"
+placeholder="Flags (g i m s u)"
+>
+
+<textarea
+id="text"
+placeholder="Enter text here..."
+></textarea>
+
+<div class="buttons">
+
+<button onclick="testRegex()">Test Regex</button>
+
+<button onclick="clearAll()">Clear</button>
+
+<button onclick="copyResult()">Copy Result</button>
+
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function testRegex(){
+
+const pattern=document.getElementById("pattern").value;
+const flags=document.getElementById("flags").value;
+const text=document.getElementById("text").value;
+const output=document.getElementById("result");
+
+try{
+
+const regex=new RegExp(pattern,flags);
+
+const matches=[...text.matchAll(regex)];
+
+if(matches.length===0){
+
+output.textContent="❌ No matches found.";
+
+return;
+
+}
+
+let result="";
+
+matches.forEach((m,index)=>{
+
+result+=`Match ${index+1}: ${m[0]}\n`;
+
+});
+
+output.textContent=result;
+
+}catch(e){
+
+output.textContent="❌ Invalid Regex\n\n"+e.message;
+
+}
+
+}
+
+function clearAll(){
+
+pattern.value="";
+flags.value="";
+text.value="";
+result.textContent="";
+
+}
+
+function copyResult(){
+
+navigator.clipboard.writeText(result.textContent);
+
+alert("Copied!");
+
+}
+
+</script>
+
+</body>
+</html>

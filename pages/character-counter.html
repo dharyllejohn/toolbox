@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Character Counter | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🔤 Character Counter</h1>
+
+<p>Count characters, spaces, lines and words instantly.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<h2>Character Counter</h2>
+
+<textarea
+id="text"
+rows="10"
+placeholder="Type or paste text here..."
+style="width:100%;padding:15px;border-radius:12px;"></textarea>
+
+<button
+id="countBtn"
+class="primary-btn">
+
+📊 Count
+
+</button>
+
+<div class="result-box">
+
+<p><strong>Characters:</strong> <span id="characters">0</span></p>
+
+<p><strong>Characters (No Spaces):</strong> <span id="noSpaces">0</span></p>
+
+<p><strong>Words:</strong> <span id="words">0</span></p>
+
+<p><strong>Lines:</strong> <span id="lines">0</span></p>
+
+<p><strong>Spaces:</strong> <span id="spaces">0</span></p>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/character-counter.js"></script>
+
+</body>
+
+</html>

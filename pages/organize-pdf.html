@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Organize PDF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📂 Organize PDF</h1>
+
+<p>Reorder PDF pages by entering a new page sequence.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<div id="pageInfo"></div>
+
+<label>Page Order</label>
+
+<input
+type="text"
+id="order"
+placeholder="Example: 3,1,2,5,4">
+
+<button
+id="organizeBtn"
+class="primary-btn">
+
+📂 Organize PDF
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script src="../js/organize-pdf.js"></script>
+
+</body>
+</html>

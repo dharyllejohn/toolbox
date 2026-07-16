@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Keyword Density Checker | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📈 Keyword Density Checker</h1>
+
+<p>Analyze keyword frequency and density.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Paste Text</label>
+
+<textarea id="text" rows="12" placeholder="Paste your content here..."></textarea>
+
+<label>Minimum Word Length</label>
+
+<input type="number" id="minLength" value="3" min="1">
+
+<button id="analyzeBtn" class="primary-btn">
+📊 Analyze
+</button>
+
+<label>Result</label>
+
+<textarea id="output" rows="16" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/keyword-density.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SQL Formatter | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../guard.js"></script>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🗄️ SQL Formatter</h1>
+
+</header>
+
+<main class="tool-container">
+
+<div class="glass" style="max-width:1100px;margin:auto;padding:25px;">
+
+<h2>SQL Formatter</h2>
+
+<textarea
+id="sqlInput"
+placeholder="Paste your SQL query here..."
+style="width:100%;height:320px;padding:15px;border-radius:10px;font-family:monospace;resize:vertical;"></textarea>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
+
+<button id="formatBtn">Format SQL</button>
+
+<button id="minifyBtn">Minify SQL</button>
+
+<button id="copyBtn">Copy</button>
+
+<button id="clearBtn">Clear</button>
+
+<button id="downloadBtn">Download</button>
+
+</div>
+
+<p id="stats" style="margin-top:20px;font-weight:bold;">
+Characters: 0 | Lines: 0
+</p>
+
+</div>
+
+</main>
+
+<script>
+
+const sqlInput = document.getElementById("sqlInput");
+const stats = document.getElementById("stats");
+
+function updateStats(){
+
+const text = sqlInput.value;
+
+const lines = text === "" ? 0 : text.split("\n").length;
+
+stats.textContent = `Characters: ${text.length} | Lines: ${lines}`;
+
+}
+
+sqlInput.addEventListener("input", updateStats);
+
+document.getElementById("clearBtn").onclick = function(){
+
+sqlInput.value = "";
+
+updateStats();
+
+};
+
+document.getElementById("copyBtn").onclick = function(){
+
+navigator.clipboard.writeText(sqlInput.value);
+
+alert("Copied!");
+
+};
+
+document.getElementById("downloadBtn").onclick = function(){
+
+const blob = new Blob([sqlInput.value], {type:"text/sql"});
+
+const a = document.createElement("a");
+
+a.href = URL.createObjectURL(blob);
+
+a.download = "query.sql";
+
+a.click();
+
+};
+
+document.getElementById("minifyBtn").onclick = function(){
+
+sqlInput.value = sqlInput.value
+.replace(/\s+/g," ")
+.replace(/\s*,\s*/g,", ")
+.trim();
+
+updateStats();
+
+};
+
+document.getElementById("formatBtn").onclick = function(){
+
+let text = sqlInput.value;
+
+const keywords = [
+"SELECT",
+"FROM",
+"WHERE",
+"GROUP BY",
+"ORDER BY",
+"INNER JOIN",
+"LEFT JOIN",
+"RIGHT JOIN",
+"JOIN",
+"HAVING",
+"LIMIT",
+"INSERT INTO",
+"VALUES",
+"UPDATE",
+"SET",
+"DELETE",
+"CREATE TABLE",
+"ALTER TABLE",
+"DROP TABLE"
+];
+
+keywords.forEach(function(word){
+
+const regex = new RegExp(word,"gi");
+
+text = text.replace(regex,"\n"+word);
+
+});
+
+sqlInput.value = text.trim();
+
+updateStats();
+
+};
+
+updateStats();
+
+</script>
+
+</body>
+</html>

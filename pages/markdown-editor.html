@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Markdown Preview | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../guard.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+
+.markdown-wrapper{
+max-width:1200px;
+margin:40px auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.editor,
+.preview{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.editor textarea{
+width:100%;
+height:500px;
+padding:15px;
+font-size:15px;
+font-family:monospace;
+border:1px solid #ddd;
+border-radius:8px;
+resize:vertical;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.buttons button{
+padding:10px 18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#2563eb;
+color:#fff;
+font-weight:600;
+}
+
+#preview{
+min-height:500px;
+overflow:auto;
+line-height:1.7;
+color:#222;
+}
+
+#stats{
+margin-top:15px;
+font-weight:600;
+}
+
+pre{
+background:#f4f4f4;
+padding:12px;
+border-radius:8px;
+overflow:auto;
+}
+
+code{
+font-family:Consolas,monospace;
+}
+
+@media(max-width:900px){
+
+.markdown-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back to Tools
+
+</button>
+
+<h1>📘 Markdown Preview</h1>
+
+</header>
+
+<main class="markdown-wrapper">
+
+<div class="editor">
+
+<h2>Markdown Editor</h2>
+
+<textarea
+id="markdownInput"
+placeholder="Write your Markdown here..."></textarea>
+
+<div class="buttons">
+
+<button onclick="previewMarkdown()">Preview</button>
+
+<button onclick="copyMarkdown()">Copy</button>
+
+<button onclick="downloadMarkdown()">Download</button>
+
+<button onclick="clearMarkdown()">Clear</button>
+
+</div>
+
+<p id="stats">
+Words: 0 | Characters: 0
+</p>
+
+</div>
+
+<div class="preview">
+
+<h2>Live Preview</h2>
+
+<div id="preview"></div>
+
+</div>
+
+</main>
+
+<script>
+
+const input=document.getElementById("markdownInput");
+
+input.addEventListener("input",previewMarkdown);
+
+function previewMarkdown(){
+
+const text=input.value;
+
+document.getElementById("preview").innerHTML=marked.parse(text);
+
+const words=text.trim()===""
+?0
+:text.trim().split(/\s+/).length;
+
+document.getElementById("stats").innerHTML=
+`Words: ${words} | Characters: ${text.length}`;
+
+}
+
+function clearMarkdown(){
+
+input.value="";
+
+document.getElementById("preview").innerHTML="";
+
+document.getElementById("stats").innerHTML=
+"Words: 0 | Characters: 0";
+
+}
+
+function copyMarkdown(){
+
+navigator.clipboard.writeText(input.value);
+
+alert("Markdown copied!");
+
+}
+
+function downloadMarkdown(){
+
+const blob=new Blob([input.value],{type:"text/markdown"});
+
+const link=document.createElement("a");
+
+link.href=URL.createObjectURL(blob);
+
+link.download="markdown.md";
+
+link.click();
+
+}
+
+previewMarkdown();
+
+</script>
+
+</body>
+</html>

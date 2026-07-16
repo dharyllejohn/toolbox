@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Schema Markup Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🧩 Schema Markup Generator</h1>
+
+<p>Create JSON-LD Schema Markup for Google.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Schema Type</label>
+
+<select id="type">
+
+<option value="Organization">Organization</option>
+<option value="Website">Website</option>
+<option value="Person">Person</option>
+<option value="LocalBusiness">Local Business</option>
+
+</select>
+
+<label>Name</label>
+
+<input type="text" id="name" placeholder="Business Name">
+
+<label>Website URL</label>
+
+<input type="text" id="url" placeholder="https://example.com">
+
+<label>Logo / Image URL</label>
+
+<input type="text" id="logo" placeholder="https://example.com/logo.png">
+
+<label>Description</label>
+
+<textarea id="description" rows="4"></textarea>
+
+<button id="generateBtn" class="primary-btn">
+
+⚡ Generate Schema
+
+</button>
+
+<label>Generated JSON-LD</label>
+
+<textarea id="output" rows="18" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+
+📋 Copy
+
+</button>
+
+<button id="downloadBtn" class="primary-btn">
+
+⬇ Download
+
+</button>
+
+<button id="clearBtn" class="primary-btn">
+
+🗑 Clear
+
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/schema-generator.js"></script>
+
+</body>
+</html>

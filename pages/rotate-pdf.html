@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rotate PDF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🔄 Rotate PDF</h1>
+
+<p>Rotate all pages in your PDF document.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<label>Rotation</label>
+
+<select id="rotation">
+
+<option value="90">90°</option>
+<option value="180">180°</option>
+<option value="270">270°</option>
+
+</select>
+
+<button id="rotateBtn" class="primary-btn">
+
+🔄 Rotate PDF
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="../js/rotate-pdf.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UUID Validator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🆔 UUID Validator</h1>
+
+<p>Validate whether a UUID is correctly formatted.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Enter UUID</label>
+
+<input type="text" id="uuidInput" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+
+<button id="validateBtn" class="primary-btn">
+Validate UUID
+</button>
+
+<label>Result</label>
+
+<input type="text" id="result" readonly>
+
+</div>
+
+</main>
+
+<script src="../js/uuid-validator.js"></script>
+
+</body>
+</html>

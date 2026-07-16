@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flexbox Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📦 Flexbox Generator</h1>
+
+<p>Build Flexbox layouts visually.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Flex Direction</label>
+
+<select id="direction">
+<option>row</option>
+<option>column</option>
+<option>row-reverse</option>
+<option>column-reverse</option>
+</select>
+
+<label>Justify Content</label>
+
+<select id="justify">
+<option>flex-start</option>
+<option>center</option>
+<option>flex-end</option>
+<option>space-between</option>
+<option>space-around</option>
+<option>space-evenly</option>
+</select>
+
+<label>Align Items</label>
+
+<select id="align">
+<option>stretch</option>
+<option>flex-start</option>
+<option>center</option>
+<option>flex-end</option>
+<option>baseline</option>
+</select>
+
+<div id="preview" style="
+display:flex;
+height:220px;
+border:2px dashed #555;
+margin:20px 0;
+padding:10px;
+gap:10px;
+">
+
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+
+</div>
+
+<textarea id="output" rows="8" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy CSS
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Reset
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/flexbox-generator.js"></script>
+
+</body>
+</html>

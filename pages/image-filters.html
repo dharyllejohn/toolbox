@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Photo Filters | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🎨 Photo Filters</h1>
+
+<p>Apply beautiful filters to your images.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<input type="file" id="imageInput" accept="image/*">
+
+<label>Filter</label>
+
+<select id="filter">
+<option value="none">Normal</option>
+<option value="grayscale(100%)">Grayscale</option>
+<option value="sepia(100%)">Sepia</option>
+<option value="invert(100%)">Invert</option>
+<option value="saturate(200%)">Saturate</option>
+<option value="contrast(180%)">High Contrast</option>
+<option value="brightness(130%)">Bright</option>
+<option value="blur(3px)">Blur</option>
+</select>
+
+<canvas id="canvas"></canvas>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download Image
+</button>
+
+</div>
+
+</main>
+
+<script src="../js/image-filters.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Audio Speed Changer | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+select{
+padding:10px;
+font-size:16px;
+border-radius:8px;
+}
+
+audio{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🎤 Audio Speed Changer</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Speed Up or Slow Down Audio</h2>
+
+<input type="file" id="audio" accept="audio/*">
+
+<div class="controls">
+
+<select id="speed">
+
+<option value="0.5">0.5x</option>
+<option value="0.75">0.75x</option>
+<option value="1" selected>1x</option>
+<option value="1.25">1.25x</option>
+<option value="1.5">1.5x</option>
+<option value="2">2x</option>
+
+</select>
+
+<button id="process">
+
+⚡ Process
+
+</button>
+
+</div>
+
+<p id="status">Ready</p>
+
+<audio id="player" controls></audio>
+
+<br><br>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download Audio
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+document.getElementById("process").onclick=async()=>{
+
+const file=document.getElementById("audio").files[0];
+
+if(!file){
+
+alert("Select an audio file.");
+
+return;
+
+}
+
+const speed=document.getElementById("speed").value;
+
+const ffmpeg=new FFmpeg();
+
+document.getElementById("status").innerHTML="Loading FFmpeg...";
+
+await ffmpeg.load();
+
+const ext=file.name.split(".").pop();
+
+await ffmpeg.writeFile("input."+ext,await fetchFile(file));
+
+document.getElementById("status").innerHTML="Processing...";
+
+await ffmpeg.exec([
+"-i",
+"input."+ext,
+"-filter:a",
+"atempo="+speed,
+"output.mp3"
+]);
+
+const data=await ffmpeg.readFile("output.mp3");
+
+const blob=new Blob([data.buffer],{type:"audio/mp3"});
+
+const url=URL.createObjectURL(blob);
+
+document.getElementById("player").src=url;
+
+const download=document.getElementById("download");
+
+download.href=url;
+
+download.download="speed-changed.mp3";
+
+download.style.display="inline-block";
+
+document.getElementById("status").innerHTML="✅ Done";
+
+};
+
+</script>
+
+</body>
+</html>

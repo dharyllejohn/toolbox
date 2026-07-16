@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Metadata | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+
+← Back to Tools
+
+</button>
+
+<h1>📋 PDF Metadata Editor</h1>
+
+<p>Edit PDF title, author and other document properties.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<label>Title</label>
+
+<input
+type="text"
+id="title"
+placeholder="Document Title">
+
+<label>Author</label>
+
+<input
+type="text"
+id="author"
+placeholder="Author">
+
+<label>Subject</label>
+
+<input
+type="text"
+id="subject"
+placeholder="Subject">
+
+<label>Keywords</label>
+
+<input
+type="text"
+id="keywords"
+placeholder="pdf, toolbox, document">
+
+<label>Creator</label>
+
+<input
+type="text"
+id="creator"
+placeholder="ToolBox Pro">
+
+<button
+id="saveBtn"
+class="primary-btn">
+
+💾 Save Metadata
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script src="../js/pdf-metadata.js"></script>
+
+</body>
+</html>

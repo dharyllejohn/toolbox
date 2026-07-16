@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Random Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.card{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
+}
+
+input,select{
+
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:10px;
+
+}
+
+button{
+
+padding:12px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+
+}
+
+.result{
+
+margin-top:25px;
+font-size:28px;
+font-weight:bold;
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🎲 Random Generator</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Generate Random Values</h2>
+
+<div class="card">
+
+<select id="type">
+
+<option value="number">Random Number</option>
+
+<option value="letter">Random Letter</option>
+
+<option value="password">Random Password</option>
+
+</select>
+
+<input
+type="number"
+id="min"
+placeholder="Minimum"
+value="1">
+
+<input
+type="number"
+id="max"
+placeholder="Maximum"
+value="100">
+
+<button onclick="generate()">
+
+Generate
+
+</button>
+
+</div>
+
+<div
+id="result"
+class="result">
+
+-
+
+</div>
+
+</main>
+
+<script>
+
+function generate(){
+
+const type=document.getElementById("type").value;
+
+if(type==="number"){
+
+const min=parseInt(document.getElementById("min").value);
+
+const max=parseInt(document.getElementById("max").value);
+
+result.innerHTML=Math.floor(Math.random()*(max-min+1))+min;
+
+}
+
+else if(type==="letter"){
+
+const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+result.innerHTML=letters[Math.floor(Math.random()*letters.length)];
+
+}
+
+else{
+
+const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+let pass="";
+
+for(let i=0;i<16;i++){
+
+pass+=chars.charAt(Math.floor(Math.random()*chars.length));
+
+}
+
+result.innerHTML=pass;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

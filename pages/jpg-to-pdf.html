@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JPG to PDF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📸 JPG to PDF</h1>
+
+<p>Convert JPG and PNG images into a PDF document.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select Images</label>
+
+<input
+type="file"
+id="images"
+accept="image/*"
+multiple>
+
+<div id="preview"
+style="
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:10px;
+margin:20px 0;
+">
+</div>
+
+<button id="convertBtn" class="primary-btn">
+
+📄 Convert to PDF
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../js/jpg-to-pdf.js"></script>
+
+</body>
+</html>

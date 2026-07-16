@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Voice Recorder | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+cursor:pointer;
+font-size:16px;
+border:none;
+border-radius:10px;
+}
+
+audio{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🎤 Voice Recorder</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Record Audio</h2>
+
+<p>
+
+Record your microphone directly inside your browser.
+
+</p>
+
+<div class="controls">
+
+<button id="startBtn">
+
+🎙 Start Recording
+
+</button>
+
+<button id="stopBtn" disabled>
+
+⏹ Stop
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<audio id="player" controls></audio>
+
+<br><br>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download Recording
+
+</button>
+
+</a>
+
+</main>
+
+<script>
+
+let recorder;
+
+let chunks=[];
+
+const start=document.getElementById("startBtn");
+const stop=document.getElementById("stopBtn");
+const status=document.getElementById("status");
+const player=document.getElementById("player");
+const download=document.getElementById("download");
+
+start.onclick=async()=>{
+
+const stream=await navigator.mediaDevices.getUserMedia({
+
+audio:true
+
+});
+
+recorder=new MediaRecorder(stream);
+
+chunks=[];
+
+recorder.ondataavailable=e=>{
+
+chunks.push(e.data);
+
+};
+
+recorder.onstop=()=>{
+
+const blob=new Blob(chunks,{
+
+type:"audio/webm"
+
+});
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="recording.webm";
+
+download.style.display="inline-block";
+
+};
+
+recorder.start();
+
+status.innerHTML="🔴 Recording...";
+
+start.disabled=true;
+
+stop.disabled=false;
+
+};
+
+stop.onclick=()=>{
+
+recorder.stop();
+
+status.innerHTML="✅ Recording Finished";
+
+start.disabled=false;
+
+stop.disabled=true;
+
+};
+
+</script>
+
+</body>
+</html>

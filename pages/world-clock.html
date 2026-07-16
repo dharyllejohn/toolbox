@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>World Clock | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+select{
+width:100%;
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:10px;
+margin:20px 0;
+}
+
+.clock{
+font-size:42px;
+font-weight:bold;
+text-align:center;
+margin-top:30px;
+}
+
+.date{
+text-align:center;
+margin-top:15px;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🌎 World Clock</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Current Time Around the World</h2>
+
+<p>Select a timezone.</p>
+
+<select id="timezone">
+
+<option value="Asia/Manila">Philippines</option>
+<option value="Asia/Tokyo">Japan</option>
+<option value="Asia/Seoul">South Korea</option>
+<option value="Asia/Singapore">Singapore</option>
+<option value="Asia/Dubai">Dubai</option>
+<option value="Europe/London">London</option>
+<option value="Europe/Paris">Paris</option>
+<option value="America/New_York">New York</option>
+<option value="America/Los_Angeles">Los Angeles</option>
+<option value="Australia/Sydney">Sydney</option>
+
+</select>
+
+<div id="clock" class="clock"></div>
+
+<div id="date" class="date"></div>
+
+</main>
+
+<script>
+
+function updateClock(){
+
+const zone=timezone.value;
+
+const now=new Date();
+
+clock.innerHTML=now.toLocaleTimeString("en-US",{
+
+timeZone:zone,
+hour12:true
+
+});
+
+date.innerHTML=now.toLocaleDateString("en-US",{
+
+timeZone:zone,
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+
+});
+
+}
+
+timezone.onchange=updateClock;
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
+
+</body>
+</html>

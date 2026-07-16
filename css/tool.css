@@ -1,0 +1,14 @@
+.tool-container{
+max-width:800px;
+margin:40px auto;
+padding:30px;
+text-align:center;
+}
+
+.back-btn{
+margin:20px;
+}
+
+.controls button:hover{
+transform:scale(1.05);
+}

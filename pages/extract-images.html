@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Extract Images | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🖼 Extract Images</h1>
+
+<p>Extract each PDF page as a high-quality image.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<button
+id="extractBtn"
+class="primary-btn">
+
+🖼 Extract Images
+
+</button>
+
+<div
+id="gallery"
+style="
+margin-top:25px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
+">
+
+</div>
+
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc=
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+</script>
+
+<script src="../js/extract-images.js"></script>
+
+</body>
+</html>

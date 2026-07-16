@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pay with PayPal</title>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AfYHOkRpt-wDrC8pMqMxUWLBMQvW81oJnO6azAN_UXXGy-nwfJG0PVI84rqL10t5tLd4XGhFHJmu1dY8&currency=USD"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+color:white;
+}
+
+.card{
+width:450px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(18px);
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+.price{
+font-size:40px;
+font-weight:bold;
+margin:15px 0;
+color:#38bdf8;
+}
+
+#paypal-button-container{
+margin-top:25px;
+}
+
+.back{
+display:inline-block;
+margin-top:20px;
+color:white;
+text-decoration:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>💳 PayPal Payment</h1>
+
+<div class="price">
+₱199 / Month
+</div>
+
+<p>
+Upgrade to <b>ToolBox Pro</b><br>
+using your PayPal account.
+</p>
+
+<div id="paypal-button-container"></div>
+
+<a class="back" href="./upgrade.html">
+← Back
+</a>
+
+</div>
+
+<script>
+
+paypal.Buttons({
+
+createOrder(data,actions){
+
+return actions.order.create({
+
+purchase_units:[{
+
+description:"ToolBox Pro Monthly",
+
+amount:{
+currency_code:"USD",
+value:"3.99"
+}
+
+}]
+
+});
+
+},
+
+async onApprove(data,actions){
+
+const details=await actions.order.capture();
+
+alert(
+"Thank you, "+
+details.payer.name.given_name+
+"! Your payment was successful."
+);
+
+// TODO:
+// Update your Supabase profile to PRO here.
+
+window.location.href="../index.html";
+
+},
+
+onError(err){
+
+    console.error("PayPal Error:", err);
+
+    alert(err.message || JSON.stringify(err));
+
+}
+
+}).render("#paypal-button-container");
+
+</script>
+
+</body>
+</html>

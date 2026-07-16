@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thumbnail Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+video{
+width:100%;
+margin-top:20px;
+}
+
+canvas{
+width:100%;
+margin-top:20px;
+border-radius:10px;
+display:none;
+}
+
+#status{
+margin-top:20px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🖼️ Thumbnail Generator</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Create Thumbnail</h2>
+
+<p>Capture a thumbnail from any video.</p>
+
+<input
+type="file"
+id="videoFile"
+accept="video/*">
+
+<video
+id="video"
+controls>
+</video>
+
+<div class="controls">
+
+<button id="capture">
+
+📸 Capture Thumbnail
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<canvas id="canvas"></canvas>
+
+<br><br>
+
+<a id="download"
+style="display:none">
+
+<button>
+
+⬇ Download Thumbnail
+
+</button>
+
+</a>
+
+</main>
+
+<script>
+
+videoFile.onchange=()=>{
+
+video.src=URL.createObjectURL(videoFile.files[0]);
+
+}
+
+capture.onclick=()=>{
+
+if(videoFile.files.length==0){
+
+alert("Select a video.");
+
+return;
+
+}
+
+const canvas=document.getElementById("canvas");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=video.videoWidth;
+
+canvas.height=video.videoHeight;
+
+ctx.drawImage(video,0,0);
+
+canvas.style.display="block";
+
+const url=canvas.toDataURL("image/png");
+
+download.href=url;
+
+download.download="thumbnail.png";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Thumbnail Created";
+
+}
+
+</script>
+
+</body>
+</html>

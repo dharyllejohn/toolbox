@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Open Graph Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📱 Open Graph Generator</h1>
+
+<p>Create Open Graph meta tags for Facebook and social media.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Website Title</label>
+<input type="text" id="title" placeholder="ToolBox Pro">
+
+<label>Description</label>
+<textarea id="description" rows="4" placeholder="Website description..."></textarea>
+
+<label>Website URL</label>
+<input type="text" id="url" placeholder="https://example.com">
+
+<label>Image URL</label>
+<input type="text" id="image" placeholder="https://example.com/image.jpg">
+
+<label>Site Name</label>
+<input type="text" id="siteName" placeholder="ToolBox Pro">
+
+<label>Type</label>
+<select id="type">
+<option value="website">Website</option>
+<option value="article">Article</option>
+<option value="blog">Blog</option>
+<option value="profile">Profile</option>
+</select>
+
+<label>Locale</label>
+<input type="text" id="locale" value="en_US">
+
+<button id="generateBtn" class="primary-btn">
+⚡ Generate Open Graph
+</button>
+
+<label>Generated Meta Tags</label>
+
+<textarea id="output" rows="14" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/open-graph-generator.js"></script>
+
+</body>
+</html>

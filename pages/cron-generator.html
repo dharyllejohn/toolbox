@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cron Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>⏰ Cron Generator</h1>
+
+<p>Create simple cron expressions.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Minute</label>
+<input type="number" id="minute" min="0" max="59" value="0">
+
+<label>Hour</label>
+<input type="number" id="hour" min="0" max="23" value="0">
+
+<label>Day of Month</label>
+<input type="number" id="day" min="1" max="31" value="*">
+
+<label>Month</label>
+<input type="number" id="month" min="1" max="12" value="*">
+
+<label>Day of Week</label>
+<input type="number" id="weekday" min="0" max="6" value="*">
+
+<button id="generateBtn" class="primary-btn">
+Generate Cron
+</button>
+
+<textarea
+id="output"
+rows="3"
+readonly
+style="width:100%;margin-top:20px;"></textarea>
+
+<button
+id="copyBtn"
+class="primary-btn">
+
+📋 Copy
+
+</button>
+
+</div>
+
+</main>
+
+<script src="../js/cron-generator.js"></script>
+
+</body>
+</html>

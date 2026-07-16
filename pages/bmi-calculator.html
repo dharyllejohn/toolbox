@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMI Calculator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>⚖️ BMI Calculator</h1>
+
+<p>Calculate your Body Mass Index instantly.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<h2>Calculate BMI</h2>
+
+<div class="input-group">
+
+<label>Height (cm)</label>
+
+<input
+type="number"
+id="height"
+placeholder="170">
+
+</div>
+
+<div class="input-group">
+
+<label>Weight (kg)</label>
+
+<input
+type="number"
+id="weight"
+placeholder="65">
+
+</div>
+
+<button
+id="calculateBtn"
+class="primary-btn">
+
+⚖️ Calculate BMI
+
+</button>
+
+<div class="result-box">
+
+<input
+type="text"
+id="result"
+readonly
+placeholder="Your BMI">
+
+<button id="copyBtn">
+
+📋 Copy
+
+</button>
+
+</div>
+
+<div
+id="category"
+class="strength">
+
+BMI Category: -
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/bmi-calculator.js"></script>
+
+</body>
+
+</html>

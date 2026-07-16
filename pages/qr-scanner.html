@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QR Scanner | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<style>
+
+#reader{
+width:100%;
+margin-top:20px;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+text-align:center;
+font-size:18px;
+word-break:break-word;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📷 QR Scanner</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Scan QR Codes</h2>
+
+<p>Use your webcam to scan QR codes.</p>
+
+<div id="reader"></div>
+
+<div id="result" class="result">
+
+Waiting for scan...
+
+</div>
+
+<button onclick="startScanner()">
+
+▶ Start Scanner
+
+</button>
+
+</main>
+
+<script>
+
+let scanner;
+
+function startScanner(){
+
+if(scanner){
+
+scanner.clear();
+
+}
+
+scanner=new Html5Qrcode("reader");
+
+scanner.start(
+
+{
+
+facingMode:"environment"
+
+},
+
+{
+
+fps:10,
+qrbox:250
+
+},
+
+(decodedText)=>{
+
+result.innerHTML=`
+
+<strong>Result:</strong><br>
+
+<a href="${decodedText}" target="_blank">
+
+${decodedText}
+
+</a>
+
+`;
+
+},
+
+()=>{}
+
+);
+
+}
+
+</script>
+
+</body>
+</html>

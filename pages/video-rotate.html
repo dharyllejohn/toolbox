@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rotate Video | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin:20px 0;
+}
+
+select,button{
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:10px;
+}
+
+video{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🔄 Rotate Video</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Rotate Video</h2>
+
+<p>Rotate videos 90°, 180° or 270°.</p>
+
+<input type="file" id="video" accept="video/*">
+
+<video id="player" controls></video>
+
+<div class="controls">
+
+<select id="angle">
+
+<option value="90">90°</option>
+<option value="180">180°</option>
+<option value="270">270°</option>
+
+</select>
+
+<button id="rotateBtn">
+
+🔄 Rotate
+
+</button>
+
+</div>
+
+<p id="status">Ready</p>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download Video
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+video.onchange=()=>{
+
+player.src=URL.createObjectURL(video.files[0]);
+
+}
+
+rotateBtn.onclick=async()=>{
+
+if(video.files.length==0){
+
+alert("Select a video.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+const file=video.files[0];
+const ext=file.name.split(".").pop();
+
+await ffmpeg.writeFile("input."+ext,await fetchFile(file));
+
+let filter="transpose=1";
+
+if(angle.value=="180") filter="transpose=1,transpose=1";
+if(angle.value=="270") filter="transpose=2";
+
+status.innerHTML="Processing...";
+
+await ffmpeg.exec([
+"-i",
+"input."+ext,
+"-vf",
+filter,
+"output.mp4"
+]);
+
+const data=await ffmpeg.readFile("output.mp4");
+
+const blob=new Blob([data.buffer],{type:"video/mp4"});
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="rotated.mp4";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QR Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🔳 QR Generator</h1>
+
+<p>Create QR codes for URLs, text and more.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Enter Text or URL</label>
+
+<textarea
+id="qrText"
+rows="5"
+placeholder="https://example.com"
+style="width:100%;"></textarea>
+
+<button
+id="generateBtn"
+class="primary-btn">
+
+Generate QR
+
+</button>
+
+<div
+id="qrResult"
+style="margin-top:25px;text-align:center;">
+</div>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+📥 Download QR
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="../js/qr-generator.js"></script>
+
+</body>
+</html>

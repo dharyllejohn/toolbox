@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Twitter Card Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🐦 Twitter Card Generator</h1>
+
+<p>Create Twitter/X Card meta tags.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Card Type</label>
+
+<select id="card">
+<option value="summary">summary</option>
+<option value="summary_large_image">summary_large_image</option>
+</select>
+
+<label>Title</label>
+
+<input type="text" id="title" placeholder="Website Title">
+
+<label>Description</label>
+
+<textarea id="description" rows="4"></textarea>
+
+<label>Image URL</label>
+
+<input type="text" id="image" placeholder="https://example.com/image.jpg">
+
+<label>Website URL</label>
+
+<input type="text" id="url" placeholder="https://example.com">
+
+<label>Twitter Username</label>
+
+<input type="text" id="site" placeholder="@username">
+
+<button id="generateBtn" class="primary-btn">
+⚡ Generate
+</button>
+
+<label>Generated Meta Tags</label>
+
+<textarea id="output" rows="12" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/twitter-card-generator.js"></script>
+
+</body>
+</html>

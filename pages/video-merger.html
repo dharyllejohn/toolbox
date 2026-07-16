@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video Merger | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+video{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📹 Video Merger</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Merge Videos</h2>
+
+<p>Select multiple MP4 videos.</p>
+
+<input type="file"
+id="videos"
+multiple
+accept="video/*">
+
+<div class="controls">
+
+<button id="mergeBtn">
+
+📹 Merge Videos
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<video
+id="player"
+controls>
+</video>
+
+<br><br>
+
+<a id="download"
+style="display:none">
+
+<button>
+
+⬇ Download Video
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+mergeBtn.onclick=async()=>{
+
+const files=videos.files;
+
+if(files.length<2){
+
+alert("Select at least two videos.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+let list="";
+
+for(let i=0;i<files.length;i++){
+
+await ffmpeg.writeFile(
+"video"+i+".mp4",
+await fetchFile(files[i])
+);
+
+list+="file 'video"+i+".mp4'\n";
+
+}
+
+await ffmpeg.writeFile(
+"list.txt",
+new TextEncoder().encode(list)
+);
+
+status.innerHTML="Merging...";
+
+await ffmpeg.exec([
+"-f",
+"concat",
+"-safe",
+"0",
+"-i",
+"list.txt",
+"-c",
+"copy",
+"merged.mp4"
+]);
+
+const data=await ffmpeg.readFile("merged.mp4");
+
+const blob=new Blob([data.buffer],{
+type:"video/mp4"
+});
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="merged.mp4";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+}
+
+</script>
+
+</body>
+</html>

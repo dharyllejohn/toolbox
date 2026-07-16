@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GCash / Maya Payment</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+padding:20px;
+}
+
+.card{
+width:500px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(18px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.qr{
+display:flex;
+justify-content:center;
+margin:20px 0;
+}
+
+.qr img{
+width:220px;
+background:#fff;
+padding:10px;
+border-radius:15px;
+}
+
+.info{
+text-align:center;
+margin-bottom:20px;
+line-height:1.7;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+font-size:15px;
+}
+
+input[type=file]{
+background:#fff;
+color:#000;
+cursor:pointer;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+#preview{
+display:none;
+width:100%;
+margin-top:15px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>📱 GCash / Maya Payment</h1>
+
+<p style="text-align:center;font-size:18px;margin-bottom:10px;">
+Amount: <b>₱199</b>
+</p>
+
+<div class="qr">
+<img src="../images/gcash-qr.jpg" alt="GCash QR">
+</div>
+
+<div class="info">
+<b>Scan the QR Code above</b><br><br>
+
+Account Name:<br>
+<b>Daryl John Pebte</b><br><br>
+
+After payment, enter your reference number and upload your receipt.
+</div>
+
+<select id="method">
+<option value="GCash">GCash</option>
+<option value="Maya">Maya</option>
+</select>
+
+<input
+type="text"
+id="reference"
+placeholder="Reference Number"
+required>
+
+<input
+type="file"
+id="receipt"
+accept="image/*"
+required>
+
+<img id="preview">
+
+<button onclick="submitPayment()">
+Submit Payment
+</button>
+
+</div>
+
+<script>
+
+const receiptInput=document.getElementById("receipt");
+const preview=document.getElementById("preview");
+
+receiptInput.onchange=function(){
+
+const file=this.files[0];
+
+if(file){
+
+preview.src=URL.createObjectURL(file);
+preview.style.display="block";
+
+}
+
+};
+
+async function submitPayment(){
+
+const {data:{user},error:authError}=await client.auth.getUser();
+
+if(authError||!user){
+
+alert("Please login first.");
+location.href="../auth.html";
+return;
+
+}
+
+const method=document.getElementById("method").value;
+const reference=document.getElementById("reference").value.trim();
+
+const file=receiptInput.files[0];
+
+if(reference===""){
+
+alert("Reference Number is required.");
+return;
+
+}
+
+if(!file){
+
+alert("Please upload your payment receipt.");
+return;
+
+}
+
+/*
+Temporary:
+Only save the filename.
+
+Later we can upload the image to
+Supabase Storage automatically.
+*/
+
+const fileName = `${user.id}-${Date.now()}-${file.name}`;
+
+// Upload receipt to Supabase Storage
+const { data: uploadData, error: uploadError } = await client.storage
+  .from("receipts")
+  .upload(fileName, file, {
+    upsert: false
+  });
+
+if (uploadError) {
+  console.error(uploadError);
+  alert("Upload failed: " + uploadError.message);
+  return;
+}
+
+// Get public URL
+const { data: publicUrlData } = client.storage
+  .from("receipts")
+  .getPublicUrl(fileName);
+
+const screenshotUrl = publicUrlData.publicUrl;
+
+// Save payment request
+const { data, error } = await client
+  .from("payment_requests")
+  .insert({
+    user_id: user.id,
+    email: user.email,
+    method: method,
+    reference_number: reference,
+    screenshot: screenshotUrl,
+    amount: 199,
+    plan: "PRO Monthly",
+    status: "pending"
+  })
+  .select();
+
+if (error) {
+  console.error(error);
+  alert(error.message);
+  return;
+}
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+alert("Payment Submitted Successfully!");
+location.href="../index.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Page Number PDF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🔢 Page Number PDF</h1>
+
+<p>Add page numbers to every page in your PDF.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<label>Position</label>
+
+<select id="position">
+
+<option value="bottom-center">Bottom Center</option>
+<option value="bottom-right">Bottom Right</option>
+<option value="bottom-left">Bottom Left</option>
+<option value="top-center">Top Center</option>
+<option value="top-right">Top Right</option>
+<option value="top-left">Top Left</option>
+
+</select>
+
+<label>Font Size</label>
+
+<input
+type="range"
+id="fontSize"
+min="10"
+max="40"
+value="16">
+
+<p id="sizeValue">16 px</p>
+
+<button
+id="generateBtn"
+class="primary-btn">
+
+🔢 Add Page Numbers
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script src="../js/page-number-pdf.js"></script>
+
+</body>
+</html>

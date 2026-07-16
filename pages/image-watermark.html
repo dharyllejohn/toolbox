@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watermark PDF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>💧 Watermark PDF</h1>
+
+<p>Add a text watermark to every page of your PDF.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select PDF</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<label>Watermark Text</label>
+
+<input
+type="text"
+id="watermark"
+placeholder="© ToolBox Pro">
+
+<label>Font Size</label>
+
+<input
+type="range"
+id="fontSize"
+min="12"
+max="80"
+value="40">
+
+<p id="sizeValue">40 px</p>
+
+<button id="generateBtn" class="primary-btn">
+
+💧 Add Watermark
+
+</button>
+
+<button
+id="downloadBtn"
+class="primary-btn"
+style="display:none;">
+
+⬇ Download PDF
+
+</button>
+
+</div>
+
+</main>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script src="../js/watermark-pdf.js"></script>
+
+</body>
+</html>

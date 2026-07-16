@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scientific Calculator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.display{
+width:100%;
+padding:15px;
+font-size:24px;
+margin-bottom:20px;
+text-align:right;
+border:none;
+border-radius:10px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+}
+
+button{
+padding:15px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📐 Scientific Calculator</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Scientific Calculator</h2>
+
+<p>Perform advanced mathematical calculations.</p>
+
+<input
+id="display"
+class="display"
+readonly>
+
+<div class="grid">
+
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button onclick="add('/')">÷</button>
+<button onclick="calc('Math.sqrt(')">√</button>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button onclick="add('*')">×</button>
+<button onclick="calc('Math.pow(')">xʸ</button>
+
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button onclick="add('-')">−</button>
+<button onclick="calc('Math.sin(')">sin</button>
+
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button onclick="equal()">=</button>
+<button onclick="add('+')">+</button>
+<button onclick="calc('Math.cos(')">cos</button>
+
+<button onclick="clearDisplay()">C</button>
+<button onclick="calc('Math.tan(')">tan</button>
+<button onclick="calc('Math.log10(')">log</button>
+<button onclick="calc('Math.log(')">ln</button>
+<button onclick="add(')')">)</button>
+
+</div>
+
+</main>
+
+<script>
+
+const display=document.getElementById("display");
+
+function add(v){
+
+display.value+=v;
+
+}
+
+function calc(v){
+
+display.value+=v;
+
+}
+
+function clearDisplay(){
+
+display.value="";
+
+}
+
+function equal(){
+
+try{
+
+display.value=eval(display.value);
+
+}catch{
+
+display.value="Error";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

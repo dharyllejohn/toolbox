@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calendar | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.calendar{
+margin-top:20px;
+text-align:center;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+button{
+padding:10px 18px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:8px;
+}
+
+.day,
+.date{
+padding:12px;
+border-radius:8px;
+background:rgba(255,255,255,.08);
+}
+
+.today{
+background:#4caf50;
+color:#fff;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📅 Calendar</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Monthly Calendar</h2>
+
+<div class="calendar">
+
+<div class="header">
+
+<button onclick="changeMonth(-1)">◀</button>
+
+<h2 id="monthYear"></h2>
+
+<button onclick="changeMonth(1)">▶</button>
+
+</div>
+
+<div class="grid" id="calendar"></div>
+
+</div>
+
+</main>
+
+<script>
+
+const months=[
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
+];
+
+const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+let current=new Date();
+
+function render(){
+
+calendar.innerHTML="";
+
+days.forEach(day=>{
+
+calendar.innerHTML+=`<div class="day"><b>${day}</b></div>`;
+
+});
+
+let year=current.getFullYear();
+let month=current.getMonth();
+
+monthYear.innerHTML=months[month]+" "+year;
+
+let first=new Date(year,month,1).getDay();
+let total=new Date(year,month+1,0).getDate();
+
+for(let i=0;i<first;i++){
+
+calendar.innerHTML+="<div></div>";
+
+}
+
+const today=new Date();
+
+for(let d=1;d<=total;d++){
+
+let cls="date";
+
+if(
+today.getDate()==d &&
+today.getMonth()==month &&
+today.getFullYear()==year
+){
+
+cls+=" today";
+
+}
+
+calendar.innerHTML+=`<div class="${cls}">${d}</div>`;
+
+}
+
+}
+
+function changeMonth(v){
+
+current.setMonth(current.getMonth()+v);
+
+render();
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>

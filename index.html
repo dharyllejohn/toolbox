@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ToolBox Pro | Free & Pro Online Tools</title>
+
+<meta name="description"
+content="ToolBox Pro offers fast, secure and modern online tools including PDF Tools, Image Tools, Text Utilities, Developer Tools and AI-powered features.">
+
+<meta name="keywords"
+content="ToolBox Pro, PDF Tools, Image Compressor, Image Resizer, JSON Formatter, Base64, API Tester, AI Resume Analyzer">
+
+<meta name="author" content="Daryl John">
+<meta name="theme-color" content="#2563eb">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="config.js"></script>
+<script src="utils.js"></script>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<div class="header-top">
+
+<h1>🧰 ToolBox Pro</h1>
+
+<div class="header-actions">
+
+<span id="userBadge" style="display:none"></span>
+
+<button id="loginBtn"
+onclick="location.href='auth.html'">
+Login
+</button>
+
+<button id="dashboardBtn"
+style="display:none"
+onclick="location.href='dashboard.html'">
+👤 Dashboard
+</button>
+
+<button id="logoutBtn"
+style="display:none"
+onclick="logout()">
+Logout
+</button>
+
+<button id="upgradeBtn"
+onclick="location.href='pages/upgrade.html'">
+⭐ Upgrade PRO
+</button>
+
+</div>
+
+</div>
+
+<nav class="navbar">
+
+<a href="index.html">Home</a>
+
+<a href="#free-tools">Free Tools</a>
+
+<a href="#pro-tools">PRO Tools</a>
+
+<a href="#features">Features</a>
+
+<a href="#stats">Statistics</a>
+
+<a href="#testimonials">Reviews</a>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="hero-left">
+
+<span class="hero-badge">
+
+🚀 Fast • Secure • Cloud Based
+
+</span>
+
+<h2>
+
+All Your Digital Tools
+
+<span>In One Place</span>
+
+</h2>
+
+<p class="hero-subtitle">
+
+Compress images, convert PDFs, resize files, format JSON,
+test APIs, analyze resumes with AI, and much more.
+
+Everything works directly in your browser with no installation.
+
+</p>
+
+<p id="status" class="hero-status">
+
+Checking account...
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="document.getElementById('free-tools').scrollIntoView({behavior:'smooth'})">
+
+Explore Tools
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="location.href='pages/upgrade.html'">
+
+Upgrade PRO
+
+</button>
+
+</div>
+
+<div class="hero-stats">
+
+<div>
+
+<h3>50+</h3>
+
+<span>Online Tools</span>
+
+</div>
+
+<div>
+
+<h3>99.9%</h3>
+
+<span>Uptime</span>
+
+</div>
+
+<div>
+
+<h3>24/7</h3>
+
+<span>Available</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="dashboard-preview">
+
+<div class="window-bar">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<h3>
+
+ToolBox Dashboard
+
+</h3>
+
+<div class="preview-grid">
+
+<div class="preview-card">
+
+📄 PDF Tools
+
+</div>
+
+<div class="preview-card">
+
+🖼 Image Tools
+
+</div>
+
+<div class="preview-card">
+
+💻 Developer
+
+</div>
+
+<div class="preview-card">
+
+🤖 AI Tools
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =========================================
+SEARCH
+========================================= -->
+
+<section class="search-section">
+
+    <div class="search-wrapper">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            id="toolSearch"
+            class="search-input"
+            placeholder="Search for tools...">
+
+    </div>
+
+</section>
+
+<!-- =========================================
+CATEGORIES
+========================================= -->
+
+<section class="categories">
+
+<button class="category active">All</button>
+
+<button class="category">PDF</button>
+
+<button class="category">Image</button>
+
+<button class="category">Text</button>
+
+<button class="category">Developer</button>
+
+<button class="category">AI</button>
+
+<button class="category">SEO</button>
+
+<button class="category">Security</button>
+
+<button class="category">Utilities</button>
+
+<button class="category">Calculators</button>
+
+<button class="category">Converters</button>
+
+<button class="category">File Tools</button>
+
+</section>
+
+<!-- =========================================
+FREE TOOLS
+========================================= -->
+
+<section id="free-tools">
+
+<h2>🟢 Free Tools</h2>
+
+<div class="grid">
+
+        <div class="card" onclick="location.href='pages/image-compressor.html'">
+
+<div class="card-icon">🖼️</div>
+
+<div class="card-content">
+<h3>Image Compressor</h3>
+<p>Compress JPG, PNG and WEBP images without losing quality.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/image-resizer.html'">
+
+<div class="card-icon">📏</div>
+
+<div class="card-content">
+<h3>Image Resizer</h3>
+<p>Resize images to any dimensions instantly.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/pdf-tools.html'">
+
+<div class="card-icon">📄</div>
+
+<div class="card-content">
+<h3>PDF Tools</h3>
+<p>Merge, Split, Compress and Convert PDF files.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/text-tools.html'">
+
+<div class="card-icon">📝</div>
+
+<div class="card-content">
+<h3>Text Tools</h3>
+<p>Edit, format and clean text quickly.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/calculator.html'">
+
+<div class="card-icon">🧮</div>
+
+<div class="card-content">
+<h3>Calculator</h3>
+<p>Fast and accurate online calculator.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/qr-generator.html'">
+
+<div class="card-icon">🔳</div>
+
+<div class="card-content">
+<h3>QR Generator</h3>
+<p>Create QR codes for URLs, text and contacts.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/password-generator.html'">
+
+<div class="card-icon">🔑</div>
+
+<div class="card-content">
+<h3>Password Generator</h3>
+<p>Create strong and secure passwords instantly.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/uuid-generator.html'">
+
+<div class="card-icon">🆔</div>
+
+<div class="card-content">
+<h3>UUID Generator</h3>
+<p>Generate UUID v4 identifiers for developers.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/color-picker.html'">
+
+<div class="card-icon">🎨</div>
+
+<div class="card-content">
+<h3>Color Picker</h3>
+<p>Convert HEX, RGB and HSL color formats.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/unit-converter.html'">
+
+<div class="card-icon">📐</div>
+
+<div class="card-content">
+<h3>Unit Converter</h3>
+<p>Convert length, weight, temperature and more.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/unit-converter.html'">
+
+<div class="card-icon">📐</div>
+
+<div class="card-content">
+<h3>Unit Converter</h3>
+<p>Convert length, weight, temperature and more.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/bmi-calculator.html'">
+
+<div class="card-icon">⚖️</div>
+
+<div class="card-content">
+<h3>BMI Calculator</h3>
+<p>Check your Body Mass Index instantly.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/word-counter.html'">
+
+<div class="card-icon">📝</div>
+
+<div class="card-content">
+<h3>Word Counter</h3>
+<p>Count words, paragraphs and reading time.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/character-counter.html'">
+
+<div class="card-icon">🔤</div>
+
+<div class="card-content">
+<h3>Character Counter</h3>
+<p>Count characters with or without spaces.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/lorem-generator.html'">
+
+<div class="card-icon">📄</div>
+
+<div class="card-content">
+<h3>Lorem Ipsum</h3>
+<p>Generate placeholder text for websites and apps.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/random-number.html'">
+
+<div class="card-icon">🎲</div>
+
+<div class="card-content">
+<h3>Random Number</h3>
+<p>Generate random numbers in any range.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/password-checker.html'">
+
+<div class="card-icon">🛡️</div>
+
+<div class="card-content">
+<h3>Password Checker</h3>
+<p>Check the security strength of your password.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/timestamp-converter.html'">
+
+<div class="card-icon">⏰</div>
+
+<div class="card-content">
+<h3>Timestamp Converter</h3>
+<p>Convert Unix timestamps into readable dates.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/url-encoder.html'">
+
+<div class="card-icon">🔗</div>
+
+<div class="card-content">
+<h3>URL Encoder</h3>
+<p>Encode and decode URLs quickly.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+<div class="card" onclick="location.href='pages/hash-generator.html'">
+
+<div class="card-icon">🔒</div>
+
+<div class="card-content">
+<h3>Hash Generator</h3>
+<p>Generate MD5, SHA1 and SHA256 hashes.</p>
+</div>
+
+<button class="tool-btn">Open Tool →</button>
+
+</div>
+
+</div>
+
+</section>
+<!-- =========================================
+PRO TOOLS
+========================================= -->
+
+<section id="pro-tools">
+
+<h2>🔥 PRO Developer Tools</h2>
+
+<div class="grid">
+
+<!-- JSON Formatter -->
+<div class="card" onclick="location.href='pages/json-formatter.html'">
+<div class="card-icon">📄</div>
+<div class="card-content">
+<h3>JSON Formatter</h3>
+<p>Beautify and validate JSON.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- JSON Validator -->
+<div class="card" onclick="location.href='pages/json-validator.html'">
+<div class="card-icon">✅</div>
+<div class="card-content">
+<h3>JSON Validator</h3>
+<p>Validate JSON syntax.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- JSON Minifier -->
+<div class="card" onclick="location.href='pages/json-minifier.html'">
+<div class="card-icon">📦</div>
+<div class="card-content">
+<h3>JSON Minifier</h3>
+<p>Minify JSON files.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- Base64 Encoder -->
+<div class="card" onclick="location.href='pages/base64-encoder.html'">
+<div class="card-icon">🔐</div>
+<div class="card-content">
+<h3>Base64 Encoder</h3>
+<p>Encode text into Base64.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- Base64 Decoder -->
+<div class="card" onclick="location.href='pages/base64-decoder.html'">
+<div class="card-icon">🔓</div>
+<div class="card-content">
+<h3>Base64 Decoder</h3>
+<p>Decode Base64 text.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- API Tester -->
+<div class="card" onclick="location.href='pages/api-tester.html'">
+<div class="card-icon">🌐</div>
+<div class="card-content">
+<h3>API Tester</h3>
+<p>Test REST APIs easily.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- HTML Formatter -->
+<div class="card" onclick="location.href='pages/html-formatter.html'">
+<div class="card-icon">🌍</div>
+<div class="card-content">
+<h3>HTML Formatter</h3>
+<p>Beautify HTML code.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- CSS Formatter -->
+<div class="card" onclick="location.href='pages/css-formatter.html'">
+<div class="card-icon">🎨</div>
+<div class="card-content">
+<h3>CSS Formatter</h3>
+<p>Beautify CSS instantly.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- JavaScript Formatter -->
+<div class="card" onclick="location.href='pages/javascript-formatter.html'">
+<div class="card-icon">⚡</div>
+<div class="card-content">
+<h3>JavaScript Formatter</h3>
+<p>Beautify JavaScript.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- SQL Formatter -->
+<div class="card" onclick="location.href='pages/sql-formatter.html'">
+<div class="card-icon">🗄️</div>
+<div class="card-content">
+<h3>SQL Formatter</h3>
+<p>Format SQL queries.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- XML Formatter -->
+<div class="card" onclick="location.href='pages/xml-formatter.html'">
+<div class="card-icon">📑</div>
+<div class="card-content">
+<h3>XML Formatter</h3>
+<p>Beautify XML files.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- Regex Tester -->
+<div class="card" onclick="location.href='pages/regex-tester.html'">
+<div class="card-icon">🧩</div>
+<div class="card-content">
+<h3>Regex Tester</h3>
+<p>Test regular expressions.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- JWT Decoder -->
+<div class="card" onclick="location.href='pages/jwt-decoder.html'">
+<div class="card-icon">🔑</div>
+<div class="card-content">
+<h3>JWT Decoder</h3>
+<p>Decode JWT tokens.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- Markdown Preview -->
+<div class="card" onclick="location.href='pages/markdown-editor.html'">
+<div class="card-icon">📘</div>
+<div class="card-content">
+<h3>Markdown Preview</h3>
+<p>Preview Markdown live.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- URL Parser -->
+<div class="card" onclick="location.href='pages/url-parser.html'">
+<div class="card-icon">🔗</div>
+<div class="card-content">
+<h3>URL Parser</h3>
+<p>Parse URL components.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+
+<!-- UUID Validator -->
+<div class="card" onclick="location.href='pages/uuid-validator.html'">
+<div class="card-icon">🆔</div>
+<div class="card-content">
+<h3>UUID Validator</h3>
+<p>Validate UUID strings.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- Cron Generator -->
+<div class="card" onclick="location.href='pages/cron-generator.html'">
+<div class="card-icon">⏰</div>
+<div class="card-content">
+<h3>Cron Generator</h3>
+<p>Create cron expressions.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+<!-- AI Resume Analyzer -->
+<div class="card" onclick="location.href='pages/ai-resume-analyzer.html'">
+<div class="card-icon">🤖</div>
+<div class="card-content">
+<h3>AI Resume Analyzer</h3>
+<p>AI-powered resume analysis.</p>
+</div>
+<button class="tool-btn">PRO ⭐</button>
+</div>
+
+</div>
+
+<section id="ai-tools">
+
+
+    
+
+<h2>🌐 SEO & Website Tools</h2>
+
+<div class="grid">
+
+<!-- Meta Tag Generator -->
+<div class="card" onclick="location.href='pages/meta-tag-generator.html'">
+<div class="card-icon">🏷️</div>
+<div class="card-content">
+<h3>Meta Tag Generator</h3>
+<p>Create SEO meta tags for your website.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Sitemap Generator -->
+<div class="card" onclick="location.href='pages/sitemap-generator.html'">
+<div class="card-icon">🗺️</div>
+<div class="card-content">
+<h3>Sitemap Generator</h3>
+<p>Generate XML sitemaps automatically.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Robots.txt Generator -->
+<div class="card" onclick="location.href='pages/robots-generator.html'">
+<div class="card-icon">🤖</div>
+<div class="card-content">
+<h3>Robots.txt Generator</h3>
+<p>Create robots.txt for search engines.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Open Graph -->
+<div class="card" onclick="location.href='pages/open-graph.html'">
+<div class="card-icon">📱</div>
+<div class="card-content">
+<h3>Open Graph Generator</h3>
+<p>Create Facebook and social meta tags.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Twitter Card -->
+<div class="card" onclick="location.href='pages/twitter-card.html'">
+<div class="card-icon">🐦</div>
+<div class="card-content">
+<h3>Twitter Card Generator</h3>
+<p>Create Twitter card meta tags.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Slug Generator -->
+<div class="card" onclick="location.href='pages/slug-generator.html'">
+<div class="card-icon">🔗</div>
+<div class="card-content">
+<h3>Slug Generator</h3>
+<p>Create SEO friendly URLs.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Keyword Density -->
+<div class="card" onclick="location.href='pages/keyword-density.html'">
+<div class="card-icon">📈</div>
+<div class="card-content">
+<h3>Keyword Density Checker</h3>
+<p>Analyze keyword usage in text.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- HTML Minifier -->
+<div class="card" onclick="location.href='pages/html-minifier.html'">
+<div class="card-icon">📄</div>
+<div class="card-content">
+<h3>HTML Minifier</h3>
+<p>Reduce HTML file size.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- CSS Minifier -->
+<div class="card" onclick="location.href='pages/css-minifier.html'">
+<div class="card-icon">🎨</div>
+<div class="card-content">
+<h3>CSS Minifier</h3>
+<p>Compress CSS code.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- JS Minifier -->
+<div class="card" onclick="location.href='pages/js-minifier.html'">
+<div class="card-icon">⚡</div>
+<div class="card-content">
+<h3>JavaScript Minifier</h3>
+<p>Compress JavaScript code.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- HTML Encoder -->
+<div class="card" onclick="location.href='pages/html-encoder.html'">
+<div class="card-icon">📝</div>
+<div class="card-content">
+<h3>HTML Encoder</h3>
+<p>Encode special HTML characters.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- HTML Decoder -->
+<div class="card" onclick="location.href='pages/html-decoder.html'">
+<div class="card-icon">📋</div>
+<div class="card-content">
+<h3>HTML Decoder</h3>
+<p>Decode HTML entities.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- CSS Gradient -->
+<div class="card" onclick="location.href='pages/css-gradient.html'">
+<div class="card-icon">🌈</div>
+<div class="card-content">
+<h3>CSS Gradient Generator</h3>
+<p>Create beautiful CSS gradients.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Box Shadow -->
+<div class="card" onclick="location.href='pages/box-shadow.html'">
+<div class="card-icon">⬛</div>
+<div class="card-content">
+<h3>Box Shadow Generator</h3>
+<p>Create CSS box shadows visually.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Border Radius -->
+<div class="card" onclick="location.href='pages/border-radius.html'">
+<div class="card-icon">🟦</div>
+<div class="card-content">
+<h3>Border Radius Generator</h3>
+<p>Create rounded corners visually.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Flexbox -->
+<div class="card" onclick="location.href='pages/flexbox-generator.html'">
+<div class="card-icon">📦</div>
+<div class="card-content">
+<h3>Flexbox Generator</h3>
+<p>Build Flexbox layouts visually.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Grid -->
+<div class="card" onclick="location.href='pages/grid-generator.html'">
+<div class="card-icon">🔲</div>
+<div class="card-content">
+<h3>CSS Grid Generator</h3>
+<p>Create CSS Grid layouts visually.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Favicon -->
+<div class="card" onclick="location.href='pages/favicon-generator.html'">
+<div class="card-icon">⭐</div>
+<div class="card-content">
+<h3>Favicon Generator</h3>
+<p>Create website favicons instantly.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Manifest -->
+<div class="card" onclick="location.href='pages/manifest-generator.html'">
+<div class="card-icon">📱</div>
+<div class="card-content">
+<h3>PWA Manifest Generator</h3>
+<p>Create manifest.json for PWAs.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Schema -->
+<div class="card" onclick="location.href='pages/schema-generator.html'">
+<div class="card-icon">🧩</div>
+<div class="card-content">
+<h3>Schema Markup Generator</h3>
+<p>Create structured data for Google.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="pdf-tools">
+
+<h2>📄 PDF Ultimate Suite</h2>
+
+<div class="grid">
+
+<!-- Merge PDF -->
+<div class="card" onclick="location.href='pages/merge-pdf.html'">
+<div class="card-icon">📑</div>
+<div class="card-content">
+<h3>Merge PDF</h3>
+<p>Combine multiple PDF files into one.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Split PDF -->
+<div class="card" onclick="location.href='pages/split-pdf.html'">
+<div class="card-icon">✂️</div>
+<div class="card-content">
+<h3>Split PDF</h3>
+<p>Extract pages from PDF documents.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- PDF to JPG -->
+<div class="card" onclick="location.href='pages/pdf-to-jpg.html'">
+<div class="card-icon">🖼️</div>
+<div class="card-content">
+<h3>PDF to JPG</h3>
+<p>Convert PDF pages into images.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- JPG to PDF -->
+<div class="card" onclick="location.href='pages/jpg-to-pdf.html'">
+<div class="card-icon">📸</div>
+<div class="card-content">
+<h3>JPG to PDF</h3>
+<p>Create PDFs from images.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Rotate PDF -->
+<div class="card" onclick="location.href='pages/rotate-pdf.html'">
+<div class="card-icon">🔄</div>
+<div class="card-content">
+<h3>Rotate PDF</h3>
+<p>Rotate PDF pages easily.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Watermark PDF -->
+<div class="card" onclick="location.href='pages/watermark-pdf.html'">
+<div class="card-icon">💧</div>
+<div class="card-content">
+<h3>Watermark PDF</h3>
+<p>Add text or image watermark.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- PDF Page Number -->
+<div class="card" onclick="location.href='pages/page-number.html'">
+<div class="card-icon">🔢</div>
+<div class="card-content">
+<h3>Page Number</h3>
+<p>Add page numbers automatically.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- PDF Metadata -->
+<div class="card" onclick="location.href='pages/pdf-metadata.html'">
+<div class="card-icon">📋</div>
+<div class="card-content">
+<h3>PDF Metadata</h3>
+<p>Edit PDF properties and metadata.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- PDF Extract Images -->
+<div class="card" onclick="location.href='pages/extract-images.html'">
+<div class="card-icon">🖼</div>
+<div class="card-content">
+<h3>Extract Images</h3>
+<p>Extract images from PDF files.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- PDF Organize -->
+<div class="card" onclick="location.href='pages/organize-pdf.html'">
+<div class="card-icon">📂</div>
+<div class="card-content">
+<h3>Organize PDF</h3>
+<p>Reorder and manage PDF pages.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="image-tools">
+
+<h2>🖼️ Image Ultimate Suite</h2>
+
+<div class="grid">
+
+<!-- Image Compressor -->
+<div class="card" onclick="location.href='pages/image-compressor.html'">
+<div class="card-icon">🗜️</div>
+<div class="card-content">
+<h3>Image Compressor</h3>
+<p>Reduce image size without losing quality.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Image Resizer -->
+<div class="card" onclick="location.href='pages/image-resizer.html'">
+<div class="card-icon">📏</div>
+<div class="card-content">
+<h3>Image Resizer</h3>
+<p>Resize images to any dimensions.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Rotate -->
+<div class="card" onclick="location.href='pages/image-rotate.html'">
+<div class="card-icon">🔄</div>
+<div class="card-content">
+<h3>Rotate Image</h3>
+<p>Rotate images to any angle.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Flip -->
+<div class="card" onclick="location.href='pages/image-flip.html'">
+<div class="card-icon">↔️</div>
+<div class="card-content">
+<h3>Flip Image</h3>
+<p>Flip images horizontally or vertically.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Watermark -->
+<div class="card" onclick="location.href='pages/image-watermark.html'">
+<div class="card-icon">💧</div>
+<div class="card-content">
+<h3>Watermark Image</h3>
+<p>Add image or text watermarks.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Blur -->
+<div class="card" onclick="location.href='pages/image-blur.html'">
+<div class="card-icon">🌫️</div>
+<div class="card-content">
+<h3>Blur Image</h3>
+<p>Apply blur effects instantly.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Sharpen -->
+<div class="card" onclick="location.href='pages/image-sharpen.html'">
+<div class="card-icon">✨</div>
+<div class="card-content">
+<h3>Sharpen Image</h3>
+<p>Improve image sharpness.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Brightness -->
+<div class="card" onclick="location.href='pages/image-brightness.html'">
+<div class="card-icon">☀️</div>
+<div class="card-content">
+<h3>Brightness & Contrast</h3>
+<p>Adjust image brightness and contrast.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Filters -->
+<div class="card" onclick="location.href='pages/image-filters.html'">
+<div class="card-icon">🎨</div>
+<div class="card-content">
+<h3>Photo Filters</h3>
+<p>Apply beautiful image filters.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Color Extractor -->
+<div class="card" onclick="location.href='pages/color-extractor.html'">
+<div class="card-icon">🎨</div>
+<div class="card-content">
+<h3>Color Extractor</h3>
+<p>Extract dominant colors from images.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+</div>
+
+</section>
+
+<section id="media-tools">
+
+<h2>🎵 Audio & Video Tools</h2>
+
+<div class="grid">
+
+
+<!-- Audio Cutter -->
+<div class="card" onclick="location.href='pages/audio-cutter.html'">
+<div class="card-icon">✂️</div>
+<div class="card-content">
+<h3>Audio Cutter</h3>
+<p>Trim MP3, WAV and M4A audio files.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Audio Merger -->
+<div class="card" onclick="location.href='pages/audio-merger.html'">
+<div class="card-icon">🎼</div>
+<div class="card-content">
+<h3>Audio Merger</h3>
+<p>Combine multiple audio files.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Voice Recorder -->
+<div class="card" onclick="location.href='pages/voice-recorder.html'">
+<div class="card-icon">🎤</div>
+<div class="card-content">
+<h3>Voice Recorder</h3>
+<p>Record audio directly from your browser.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Audio Speed -->
+<div class="card" onclick="location.href='pages/audio-speed.html'">
+<div class="card-icon">⏩</div>
+<div class="card-content">
+<h3>Audio Speed Changer</h3>
+<p>Speed up or slow down audio.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Audio Volume -->
+<div class="card" onclick="location.href='pages/audio-volume.html'">
+<div class="card-icon">🔊</div>
+<div class="card-content">
+<h3>Volume Booster</h3>
+<p>Increase or decrease audio volume.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Video Cutter -->
+<div class="card" onclick="location.href='pages/video-cutter.html'">
+<div class="card-icon">✂️</div>
+<div class="card-content">
+<h3>Video Cutter</h3>
+<p>Trim videos without quality loss.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Video Merger -->
+<div class="card" onclick="location.href='pages/video-merger.html'">
+<div class="card-icon">📹</div>
+<div class="card-content">
+<h3>Video Merger</h3>
+<p>Combine multiple videos into one.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Rotate Video -->
+<div class="card" onclick="location.href='pages/video-rotate.html'">
+<div class="card-icon">🔄</div>
+<div class="card-content">
+<h3>Rotate Video</h3>
+<p>Rotate videos 90°, 180° or 270°.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Video to GIF -->
+<div class="card" onclick="location.href='pages/video-to-gif.html'">
+<div class="card-icon">🎞️</div>
+<div class="card-content">
+<h3>Video to GIF</h3>
+<p>Create GIF animations from videos.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- GIF to MP4 -->
+<div class="card" onclick="location.href='pages/gif-to-video.html'">
+<div class="card-icon">📼</div>
+<div class="card-content">
+<h3>GIF to MP4</h3>
+<p>Convert GIF animations into MP4.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Screen Recorder -->
+<div class="card" onclick="location.href='pages/screen-recorder.html'">
+<div class="card-icon">🖥️</div>
+<div class="card-content">
+<h3>Screen Recorder</h3>
+<p>Record your screen without installing software.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Webcam Recorder -->
+<div class="card" onclick="location.href='pages/webcam-recorder.html'">
+<div class="card-icon">📷</div>
+<div class="card-content">
+<h3>Webcam Recorder</h3>
+<p>Record videos directly from your webcam.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+
+<!-- Video Thumbnail -->
+<div class="card" onclick="location.href='pages/video-thumbnail.html'">
+<div class="card-icon">🖼️</div>
+<div class="card-content">
+<h3>Thumbnail Generator</h3>
+<p>Create thumbnails from videos.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Video Metadata -->
+<div class="card" onclick="location.href='pages/video-metadata.html'">
+<div class="card-icon">📋</div>
+<div class="card-content">
+<h3>Media Metadata Viewer</h3>
+<p>View audio and video file information.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="utility-tools">
+
+<h2>🛠️ Utilities & Productivity Tools</h2>
+
+<div class="grid">
+
+<!-- Calculator -->
+<div class="card" onclick="location.href='pages/calculator.html'">
+<div class="card-icon">🧮</div>
+<div class="card-content">
+<h3>Calculator</h3>
+<p>Perform basic and advanced calculations.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Scientific Calculator -->
+<div class="card" onclick="location.href='pages/scientific-calculator.html'">
+<div class="card-icon">📐</div>
+<div class="card-content">
+<h3>Scientific Calculator</h3>
+<p>Advanced math and scientific calculations.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- BMI Calculator -->
+<div class="card" onclick="location.href='pages/bmi-calculator.html'">
+<div class="card-icon">⚖️</div>
+<div class="card-content">
+<h3>BMI Calculator</h3>
+<p>Calculate your Body Mass Index.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Age Calculator -->
+<div class="card" onclick="location.href='pages/age-calculator.html'">
+<div class="card-icon">🎂</div>
+<div class="card-content">
+<h3>Age Calculator</h3>
+<p>Calculate exact age from birth date.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Loan Calculator -->
+<div class="card" onclick="location.href='pages/loan-calculator.html'">
+<div class="card-icon">💰</div>
+<div class="card-content">
+<h3>Loan Calculator</h3>
+<p>Estimate monthly loan payments.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Currency Converter -->
+<div class="card" onclick="location.href='pages/currency-converter.html'">
+<div class="card-icon">💱</div>
+<div class="card-content">
+<h3>Currency Converter</h3>
+<p>Convert currencies instantly.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Unit Converter -->
+<div class="card" onclick="location.href='pages/unit-converter.html'">
+<div class="card-icon">📏</div>
+<div class="card-content">
+<h3>Unit Converter</h3>
+<p>Convert length, weight, speed and more.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Time Zone -->
+<div class="card" onclick="location.href='pages/world-clock.html'">
+<div class="card-icon">🌎</div>
+<div class="card-content">
+<h3>World Clock</h3>
+<p>View current time around the world.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Stopwatch -->
+<div class="card" onclick="location.href='pages/stopwatch.html'">
+<div class="card-icon">⏱️</div>
+<div class="card-content">
+<h3>Stopwatch</h3>
+<p>Measure elapsed time accurately.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Countdown -->
+<div class="card" onclick="location.href='pages/countdown.html'">
+<div class="card-icon">⌛</div>
+<div class="card-content">
+<h3>Countdown Timer</h3>
+<p>Create countdown timers easily.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Notes -->
+<div class="card" onclick="location.href='pages/notes.html'">
+<div class="card-icon">📝</div>
+<div class="card-content">
+<h3>Notes</h3>
+<p>Create quick notes in your browser.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Todo -->
+<div class="card" onclick="location.href='pages/todo.html'">
+<div class="card-icon">✅</div>
+<div class="card-content">
+<h3>To-Do List</h3>
+<p>Manage your daily tasks.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Password Checker -->
+<div class="card" onclick="location.href='pages/password-checker.html'">
+<div class="card-icon">🔐</div>
+<div class="card-content">
+<h3>Password Strength Checker</h3>
+<p>Check password security level.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- QR Scanner -->
+<div class="card" onclick="location.href='pages/qr-scanner.html'">
+<div class="card-icon">📷</div>
+<div class="card-content">
+<h3>QR Scanner</h3>
+<p>Scan QR codes using your camera.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Barcode Generator -->
+<div class="card" onclick="location.href='pages/barcode-generator.html'">
+<div class="card-icon">🏷️</div>
+<div class="card-content">
+<h3>Barcode Generator</h3>
+<p>Create barcodes instantly.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Random Generator -->
+<div class="card" onclick="location.href='pages/random-generator.html'">
+<div class="card-icon">🎲</div>
+<div class="card-content">
+<h3>Random Generator</h3>
+<p>Generate random numbers and text.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Markdown -->
+<div class="card" onclick="location.href='pages/markdown-editor.html'">
+<div class="card-icon">📄</div>
+<div class="card-content">
+<h3>Markdown Editor</h3>
+<p>Write and preview Markdown.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Text Compare -->
+<div class="card" onclick="location.href='pages/text-compare.html'">
+<div class="card-icon">📋</div>
+<div class="card-content">
+<h3>Text Compare</h3>
+<p>Compare two text documents.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- Calendar -->
+<div class="card" onclick="location.href='pages/calendar.html'">
+<div class="card-icon">📅</div>
+<div class="card-content">
+<h3>Calendar</h3>
+<p>Simple calendar and date planner.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+<!-- File Downloader -->
+<div class="card" onclick="location.href='pages/download-manager.html'">
+<div class="card-icon">📥</div>
+<div class="card-content">
+<h3>Download Manager</h3>
+<p>Manage downloadable files.</p>
+</div>
+<button class="tool-btn">Open Tool →</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+FEATURES
+========================================= -->
+
+<section id="features" class="features">
+
+    <h2>✨ Why Choose ToolBox Pro?</h2>
+
+    <p class="section-subtitle">
+
+        Everything you need in one modern online toolbox.
+
+    </p>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>Lightning Fast</h3>
+
+            <p>
+
+                Optimized tools process your files within seconds.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>Secure</h3>
+
+            <p>
+
+                Your files remain private and are processed securely.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ☁️
+            </div>
+
+            <h3>Cloud Based</h3>
+
+            <p>
+
+                No installation required. Everything runs in your browser.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>Responsive</h3>
+
+            <p>
+
+                Perfect experience on desktop, tablet and mobile.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3>AI Powered</h3>
+
+            <p>
+
+                Advanced AI tools help automate your daily work.
+
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚀
+            </div>
+
+            <h3>Always Improving</h3>
+
+            <p>
+
+                New tools and features are added regularly.
+
+            </p>
+
+        </div>
+        
+    </div>
+
+</section>
+<!-- =========================================
+STATISTICS
+========================================= -->
+
+<section id="stats" class="stats">
+
+    <h2>📊 ToolBox Pro Statistics</h2>
+
+    <p class="section-subtitle">
+
+        Built for speed, reliability and productivity.
+
+    </p>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h2>50+</h2>
+
+            <p>Powerful Tools</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>24/7</h2>
+
+            <p>Online Service</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>99.9%</h2>
+
+            <p>Uptime</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>100%</h2>
+
+            <p>Cloud Based</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+CALL TO ACTION
+========================================= -->
+
+<section class="cta">
+
+    <h2>
+
+        Ready to Unlock Premium Tools?
+
+    </h2>
+
+    <p>
+
+        Upgrade today and access developer tools,
+        AI utilities, unlimited usage and future premium features.
+
+    </p>
+
+    <button
+        class="primary-btn"
+        onclick="location.href='pages/upgrade.html'">
+
+        ⭐ Upgrade to PRO
+
+    </button>
+
+</section>
+
+<!-- =========================================
+TRUST
+========================================= -->
+
+<section class="trust">
+
+    <h2>
+
+        Trusted Technologies
+
+    </h2>
+
+    <p class="section-subtitle">
+
+        ToolBox Pro is built using modern web technologies.
+
+    </p>
+
+    <div class="trust-logos">
+
+        <div class="trust-logo">
+
+            HTML5
+
+        </div>
+
+        <div class="trust-logo">
+
+            CSS3
+
+        </div>
+
+        <div class="trust-logo">
+
+            JavaScript
+
+        </div>
+
+        <div class="trust-logo">
+
+            Supabase
+
+        </div>
+
+        <div class="trust-logo">
+
+            Vercel
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+TESTIMONIALS
+========================================= -->
+
+<section id="testimonials" class="testimonials">
+
+    <h2>💬 What Our Users Say</h2>
+
+    <p class="section-subtitle">
+        Thousands of users trust ToolBox Pro every day.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <h3>⭐⭐⭐⭐⭐</h3>
+
+                <p>
+                    "Amazing tools! Fast, simple and works perfectly."
+                </p>
+
+                <strong>— Web Developer</strong>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <h3>⭐⭐⭐⭐⭐</h3>
+
+                <p>
+                    "The PDF tools saved me hours of work."
+                </p>
+
+                <strong>— Student</strong>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <h3>⭐⭐⭐⭐⭐</h3>
+
+                <p>
+                    "Modern design and very easy to use."
+                </p>
+
+                <strong>— Freelancer</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+PRICING
+========================================= -->
+
+<section class="pricing">
+
+    <h2>💎 Choose Your Plan</h2>
+
+    <p class="section-subtitle">
+        Start free or unlock every premium feature.
+    </p>
+
+    <div class="pricing-grid">
+
+        <!-- FREE -->
+
+        <div class="pricing-card">
+
+            <h3 class="plan-name">
+                Free
+            </h3>
+
+            <div class="plan-price">
+
+                ₱0
+
+                <span>/Forever</span>
+
+            </div>
+
+            <ul class="plan-features">
+
+                <li>✅ Image Tools</li>
+                <li>✅ PDF Tools</li>
+                <li>✅ Text Tools</li>
+                <li>✅ Calculator</li>
+                <li>❌ Developer Tools</li>
+                <li>❌ AI Features</li>
+
+            </ul>
+
+            <button class="tool-btn">
+
+                Current Plan
+
+            </button>
+
+        </div>
+
+        <!-- PRO -->
+
+        <div class="pricing-card popular">
+
+            <div class="pricing-badge">
+
+                MOST POPULAR
+
+            </div>
+
+            <h3 class="plan-name">
+
+                ToolBox PRO
+
+            </h3>
+
+            <div class="plan-price">
+
+                ₱200
+
+                <span>/month</span>
+
+            </div>
+
+            <ul class="plan-features">
+
+                <li>✅ Everything in FREE</li>
+                <li>✅ JSON Formatter</li>
+                <li>✅ Base64 Tool</li>
+                <li>✅ API Tester</li>
+                <li>✅ AI Resume Analyzer</li>
+                <li>✅ Future Premium Tools</li>
+
+            </ul>
+
+            <button
+
+            class="tool-btn"
+
+            onclick="location.href='pages/upgrade.html'">
+
+                Upgrade Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+FAQ
+========================================= -->
+
+<section class="faq">
+
+<h2>
+
+❓ Frequently Asked Questions
+
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>
+
+Is ToolBox Pro free?
+
+</h3>
+
+<p>
+
+Yes. Many tools are completely free.
+Developer and AI tools require PRO.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Do I need to install anything?
+
+</h3>
+
+<p>
+
+No.
+Everything works directly inside your browser.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Are my files secure?
+
+</h3>
+
+<p>
+
+Yes.
+Your files are processed securely and are never shared.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Will more tools be added?
+
+</h3>
+
+<p>
+
+Yes.
+New online tools and AI features are added regularly.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+FOOTER
+========================================= -->
+
+
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <h3>ToolBox Pro</h3>
+        <p>Powerful developer tools in one place.</p>
+
+        <div class="footer-links">
+            <a href="pages/privacy-policy.html">Privacy Policy</a>
+            <a href="pages/terms.html">Terms of Service</a>
+            <a href="pages/contact.html">Contact</a>
+            <a href="pages/about.html">About Us</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 ToolBox Pro. Created by Daryl John
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+</main>
+
+<script>
+
+/* ==========================================
+   TOOLBOX PRO
+   SUPABASE AUTH
+========================================== */
+
+const status = document.getElementById("status");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const dashboardBtn = document.getElementById("dashboardBtn");
+const upgradeBtn = document.getElementById("upgradeBtn");
+const userBadge = document.getElementById("userBadge");
+
+
+/* ==========================================
+LOCK PRO TOOLS
+========================================== */
+
+function lockProTools(){
+
+document.querySelectorAll("#pro-tools .card").forEach(card=>{
+
+card.classList.add("locked");
+
+card.style.pointerEvents="auto";
+
+card.style.opacity=".55";
+
+
+card.onclick=function(){
+
+location.href="pages/upgrade.html";
+
+};
+
+
+});
+
+}
+
+
+/* ==========================================
+UNLOCK PRO TOOLS
+========================================== */
+
+function unlockProTools(){
+
+document.querySelectorAll("#pro-tools .card").forEach(card=>{
+
+card.classList.remove("locked");
+
+card.style.pointerEvents="auto";
+
+card.style.opacity="1";
+
+});
+
+}
+
+
+/* ==========================================
+CHECK LOGIN
+========================================== */
+
+async function checkUser(){
+
+try{
+
+const {
+
+data:{user},
+
+error
+
+}=await supabaseClient.auth.getUser();
+
+if(error || !user){
+
+status.innerHTML="🆓 Free User";
+
+loginBtn.style.display="inline-flex";
+
+logoutBtn.style.display="none";
+
+dashboardBtn.style.display="none";
+
+userBadge.style.display="none";
+
+upgradeBtn.style.display="inline-flex";
+
+lockProTools();
+
+return;
+
+}
+
+
+/* ==========================
+SHOW USER
+========================== */
+
+loginBtn.style.display="none";
+
+logoutBtn.style.display="inline-flex";
+
+dashboardBtn.style.display="inline-flex";
+
+userBadge.style.display="inline-flex";
+
+userBadge.innerHTML="👤 "+user.email;
+
+status.innerHTML="Checking subscription...";
+
+
+/* ==========================
+LOAD PROFILE
+========================== */
+
+const {
+
+data:profile,
+
+error:profileError
+
+}=await supabaseClient
+
+.from(PROFILE_TABLE)
+
+.select("is_pro")
+
+.eq("id",user.id)
+
+.single();
+
+
+if(profileError || !profile){
+
+status.innerHTML="👤 Logged In";
+
+upgradeBtn.style.display="inline-flex";
+
+lockProTools();
+
+return;
+
+}
+
+
+/* ==========================
+PRO USER
+========================== */
+
+if(profile.is_pro){
+
+unlockProTools();
+
+status.innerHTML="⭐ PRO Member";
+
+userBadge.innerHTML="⭐ PRO";
+
+upgradeBtn.style.display="none";
+
+}
+
+else{
+
+status.innerHTML="🆓 Free Account";
+
+upgradeBtn.style.display="inline-flex";
+
+lockProTools();
+
+}
+
+
+}catch(err){
+
+console.error(err);
+
+status.innerHTML="Connection Error";
+
+lockProTools();
+
+}
+
+}
+
+
+/* ==========================================
+LOGOUT
+========================================== */
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+location.reload();
+
+}
+
+
+/* ==========================================
+AUTO LOGIN CHECK
+========================================== */
+
+
+/* ==========================================
+LIVE SEARCH
+========================================== */
+
+const toolSearch=document.getElementById("toolSearch");
+
+if(toolSearch){
+
+toolSearch.addEventListener("input",function(){
+
+const keyword=this.value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+const text=card.innerText.toLowerCase();
+
+if(text.includes(keyword)){
+
+card.style.display="flex";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+}
+
+/* ==========================================
+CATEGORY FILTER
+========================================== */
+
+const categoryButtons=document.querySelectorAll(".category");
+
+categoryButtons.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+categoryButtons.forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+const category=button.dataset.category;
+
+document.querySelectorAll("#free-tools .card,#pro-tools .card").forEach(card=>{
+
+if(category==="all"){
+
+card.style.display="flex";
+
+return;
+
+}
+
+if(card.className.toLowerCase().includes(category)){
+
+card.style.display="flex";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+});
+
+/* ==========================================
+SMOOTH NAVIGATION
+========================================== */
+
+document.querySelectorAll("a[href^='#']").forEach(anchor=>{
+
+anchor.addEventListener("click",function(e){
+
+e.preventDefault();
+
+const target=document.querySelector(this.getAttribute("href"));
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+}
+
+});
+
+});
+
+/* ==========================================
+ACTIVE NAVBAR
+========================================== */
+
+const sections=document.querySelectorAll("section[id]");
+
+const navLinks=document.querySelectorAll(".navbar a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const sectionTop=section.offsetTop-120;
+
+if(window.scrollY>=sectionTop){
+
+current=section.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+/* ==========================================
+CARD HOVER EFFECT
+========================================== */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-8px)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0)";
+
+});
+
+});
+
+/* ==========================================
+SCROLL REVEAL
+========================================== */
+
+const revealItems=document.querySelectorAll(
+
+".card,.feature-card,.stat-card,.pricing-card"
+
+);
+
+const revealObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+revealItems.forEach(item=>{
+
+revealObserver.observe(item);
+
+});
+
+/* ==========================================
+BACK TO TOP
+========================================== */
+
+const topButton=document.createElement("button");
+
+topButton.innerHTML="↑";
+
+topButton.className="back-top";
+
+document.body.appendChild(topButton);
+
+topButton.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topButton.classList.add("show");
+
+}else{
+
+topButton.classList.remove("show");
+
+}
+
+});
+
+/* ==========================================
+PRELOADER FADE
+========================================== */
+
+window.addEventListener("load",()=>{
+
+document.body.classList.add("loaded");
+
+});
+/* ==========================================
+SUPABASE AUTH STATE LISTENER
+========================================== */
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+
+    console.log("Auth Event:", event);
+
+    if (event === "SIGNED_IN") {
+        checkUser();
+    }
+
+    if (event === "SIGNED_OUT") {
+        lockProTools();
+
+        if(status){
+            status.innerHTML="🆓 Free User";
+        }
+
+        if(loginBtn){
+            loginBtn.style.display="inline-flex";
+        }
+
+        if(logoutBtn){
+            logoutBtn.style.display="none";
+        }
+
+        if(dashboardBtn){
+            dashboardBtn.style.display="none";
+        }
+
+        if(userBadge){
+            userBadge.style.display="none";
+        }
+
+        if(upgradeBtn){
+            upgradeBtn.style.display="inline-flex";
+        }
+    }
+
+});
+
+
+/* ==========================================
+INITIALIZE PAGE
+========================================== */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    checkUser();
+
+    console.log("✅ ToolBox Pro Loaded");
+
+});
+
+
+/* ==========================================
+END OF SCRIPT
+========================================== */
+
+/* ==========================================
+CHAT SUPPORT
+========================================== */
+
+const chatToggle=document.getElementById("chatToggle");
+const chatBox=document.getElementById("chatBox");
+const sendChat=document.getElementById("sendChat");
+const chatInput=document.getElementById("chatInput");
+const chatMessages=document.getElementById("chatMessages");
+
+chatToggle.onclick=()=>{
+
+chatBox.style.display=
+chatBox.style.display==="block"
+?"none"
+:"block";
+
+};
+
+sendChat.onclick=sendMessage;
+
+chatInput.addEventListener("keypress",e=>{
+
+if(e.key==="Enter"){
+
+sendMessage();
+
+}
+
+});
+
+function sendMessage(){
+
+const msg=chatInput.value.trim();
+
+if(!msg)return;
+
+chatMessages.innerHTML+=`
+
+<div class="user">${msg}</div>
+
+`;
+
+chatInput.value="";
+
+chatMessages.scrollTop=chatMessages.scrollHeight;
+
+setTimeout(()=>{
+
+let reply="";
+
+const text=msg.toLowerCase();
+
+if(text.includes("pro")){
+
+reply="⭐ Upgrade PRO from the Upgrade page to unlock premium tools.";
+
+}
+
+else if(text.includes("price")){
+
+reply="💎 ToolBox PRO costs ₱199 per month.";
+
+}
+
+else if(text.includes("pdf")){
+
+reply="📄 You can find all PDF tools in the PDF Ultimate Suite section.";
+
+}
+
+else if(text.includes("image")){
+
+reply="🖼 Image tools are available in the Image Ultimate Suite.";
+
+}
+
+else if(text.includes("hello")||text.includes("hi")){
+
+reply="👋 Hello! How can I help you?";
+
+}
+
+else{
+
+reply="Thanks for your message! Our support team will reply as soon as possible.";
+
+}
+
+chatMessages.innerHTML+=`
+
+<div class="bot">${reply}</div>
+
+`;
+
+chatMessages.scrollTop=chatMessages.scrollHeight;
+
+},600);
+
+}
+
+/* ==========================================
+END OF SCRIPT
+========================================== */
+
+</script>
+
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="fef38c6a-f781-499d-89a2-127c8b4f42e1";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+
+</body>
+
+</html>

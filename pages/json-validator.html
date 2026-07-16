@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JSON Validator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../guard.js"></script>
+
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:1000px;
+    margin:40px auto;
+    padding:20px;
+}
+
+textarea{
+    width:100%;
+    height:260px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    resize:vertical;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 24px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✅ JSON Validator</h1>
+
+<textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+
+<button onclick="validateJSON()">
+Validate JSON
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function validateJSON(){
+
+const input=document.getElementById("jsonInput").value.trim();
+const result=document.getElementById("result");
+
+if(input===""){
+    result.style.background="#7f1d1d";
+    result.innerHTML="❌ Please enter JSON first.";
+    return;
+}
+
+try{
+
+    JSON.parse(input);
+
+    result.style.background="#14532d";
+    result.innerHTML="✅ Valid JSON";
+
+}catch(error){
+
+    result.style.background="#7f1d1d";
+    result.innerHTML=
+    "❌ Invalid JSON<br><br>"+error.message;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

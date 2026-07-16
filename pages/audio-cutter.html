@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Audio Cutter | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin:20px 0;
+}
+
+input{
+padding:10px;
+width:120px;
+font-size:16px;
+border-radius:8px;
+border:none;
+text-align:center;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+audio{
+width:100%;
+margin-top:20px;
+}
+
+#status{
+margin-top:20px;
+font-weight:bold;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>✂️ Audio Cutter</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Trim Audio</h2>
+
+<p>
+
+Supports MP3, WAV, M4A and other browser supported audio files.
+
+</p>
+
+<input
+type="file"
+id="audioFile"
+accept="audio/*">
+
+<br><br>
+
+<audio
+id="player"
+controls>
+</audio>
+
+<div class="controls">
+
+<div>
+
+<label>Start (sec)</label><br>
+
+<input
+type="number"
+id="startTime"
+value="0"
+min="0">
+
+</div>
+
+<div>
+
+<label>End (sec)</label><br>
+
+<input
+type="number"
+id="endTime"
+value="10"
+min="1">
+
+</div>
+
+</div>
+
+<div class="controls">
+
+<button id="cutBtn">
+
+✂️ Cut Audio
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download Trimmed Audio
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const fileInput=document.getElementById("audioFile");
+const player=document.getElementById("player");
+const cutBtn=document.getElementById("cutBtn");
+const status=document.getElementById("status");
+const download=document.getElementById("download");
+
+let selectedFile;
+
+fileInput.onchange=()=>{
+
+selectedFile=fileInput.files[0];
+
+if(!selectedFile)return;
+
+player.src=URL.createObjectURL(selectedFile);
+
+};
+
+cutBtn.onclick=async()=>{
+
+if(!selectedFile){
+
+alert("Select an audio file.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+const ext=selectedFile.name.split(".").pop();
+
+await ffmpeg.writeFile(
+"input."+ext,
+await fetchFile(selectedFile)
+);
+
+status.innerHTML="Processing...";
+
+const start=document.getElementById("startTime").value;
+const end=document.getElementById("endTime").value;
+
+await ffmpeg.exec([
+"-i",
+"input."+ext,
+"-ss",
+start,
+"-to",
+end,
+"-c",
+"copy",
+"output."+ext
+]);
+
+const data=await ffmpeg.readFile("output."+ext);
+
+const blob=new Blob(
+[data.buffer],
+{
+type:selectedFile.type
+}
+);
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="trimmed."+ext;
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+};
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Favicon Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>⭐ Favicon Generator</h1>
+
+<p>Create a favicon from your image.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Select Image</label>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<canvas
+id="canvas"
+width="64"
+height="64"
+style="
+margin:25px auto;
+display:block;
+border:2px dashed #666;
+">
+</canvas>
+
+<div class="button-group">
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download PNG
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/favicon-generator.js"></script>
+
+</body>
+</html>

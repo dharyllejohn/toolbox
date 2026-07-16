@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Box Shadow Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>⬛ Box Shadow Generator</h1>
+
+<p>Create CSS box shadows visually.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>Blur</label>
+
+<input type="range" id="blur" min="0" max="50" value="20">
+
+<label>Spread</label>
+
+<input type="range" id="spread" min="-20" max="20" value="0">
+
+<div id="preview" style="width:180px;height:180px;background:#fff;border-radius:12px;margin:25px auto;"></div>
+
+<textarea id="output" rows="3" readonly>
+</textarea>
+
+<button id="copyBtn" class="primary-btn">
+
+📋 Copy CSS
+
+</button>
+
+</div>
+
+</main>
+
+<script src="../js/box-shadow-generator.js"></script>
+
+</body>
+</html>

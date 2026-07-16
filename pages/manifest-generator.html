@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PWA Manifest Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>📱 PWA Manifest Generator</h1>
+
+<p>Create a manifest.json file for Progressive Web Apps.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>App Name</label>
+<input type="text" id="name" placeholder="ToolBox Pro">
+
+<label>Short Name</label>
+<input type="text" id="shortName" placeholder="ToolBox">
+
+<label>Description</label>
+<textarea id="description" rows="3"></textarea>
+
+<label>Theme Color</label>
+<input type="color" id="themeColor" value="#4f46e5">
+
+<label>Background Color</label>
+<input type="color" id="backgroundColor" value="#ffffff">
+
+<label>Start URL</label>
+<input type="text" id="startUrl" value="/">
+
+<label>Display</label>
+
+<select id="display">
+
+<option value="standalone">standalone</option>
+<option value="fullscreen">fullscreen</option>
+<option value="minimal-ui">minimal-ui</option>
+<option value="browser">browser</option>
+
+</select>
+
+<button id="generateBtn" class="primary-btn">
+
+⚡ Generate Manifest
+
+</button>
+
+<label>Generated manifest.json</label>
+
+<textarea id="output" rows="18" readonly></textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/pwa-generator.js"></script>
+
+</body>
+</html>

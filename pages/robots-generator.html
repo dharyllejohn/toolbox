@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Robots.txt Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>🤖 Robots.txt Generator</h1>
+
+<p>Create a robots.txt file for search engines.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<label>User Agent</label>
+<input
+type="text"
+id="userAgent"
+value="*"
+placeholder="*">
+
+<label>Allow</label>
+<input
+type="text"
+id="allow"
+placeholder="/">
+
+<label>Disallow</label>
+<input
+type="text"
+id="disallow"
+placeholder="/admin/">
+
+<label>Crawl Delay (optional)</label>
+<input
+type="number"
+id="crawlDelay"
+placeholder="10">
+
+<label>Sitemap URL</label>
+<input
+type="text"
+id="sitemap"
+placeholder="https://example.com/sitemap.xml">
+
+<button id="generateBtn" class="primary-btn">
+⚡ Generate Robots.txt
+</button>
+
+<label>Generated robots.txt</label>
+
+<textarea
+id="output"
+rows="15"
+readonly>
+</textarea>
+
+<div class="button-group">
+
+<button id="copyBtn" class="primary-btn">
+📋 Copy
+</button>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download
+</button>
+
+<button id="clearBtn" class="primary-btn">
+🗑 Clear
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+<script src="../js/robots-generator.js"></script>
+
+</body>
+</html>

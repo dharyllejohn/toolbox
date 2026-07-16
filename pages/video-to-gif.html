@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video to GIF | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px 0;
+flex-wrap:wrap;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+video,img{
+width:100%;
+margin-top:20px;
+border-radius:10px;
+}
+
+#status{
+margin-top:20px;
+font-weight:bold;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🎞️ Video to GIF</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Create GIF</h2>
+
+<p>Convert MP4 videos into animated GIFs.</p>
+
+<input type="file"
+id="video"
+accept="video/*">
+
+<video id="player" controls></video>
+
+<div class="controls">
+
+<button id="convert">
+
+🎞️ Convert
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<img id="preview">
+
+<br><br>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download GIF
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+video.onchange=()=>{
+
+player.src=URL.createObjectURL(video.files[0]);
+
+}
+
+convert.onclick=async()=>{
+
+if(video.files.length==0){
+
+alert("Select a video.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+await ffmpeg.writeFile(
+"input.mp4",
+await fetchFile(video.files[0])
+);
+
+status.innerHTML="Converting...";
+
+await ffmpeg.exec([
+"-i",
+"input.mp4",
+"output.gif"
+]);
+
+const data=await ffmpeg.readFile("output.gif");
+
+const blob=new Blob([data.buffer],{
+type:"image/gif"
+});
+
+const url=URL.createObjectURL(blob);
+
+preview.src=url;
+
+download.href=url;
+
+download.download="animation.gif";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+}
+
+</script>
+
+</body>
+</html>

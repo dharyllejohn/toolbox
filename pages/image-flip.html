@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flip Image | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>↔️ Flip Image</h1>
+
+<p>Flip images horizontally or vertically.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<input type="file" id="imageInput" accept="image/*">
+
+<div style="display:flex;gap:10px;justify-content:center;margin:20px 0;">
+
+<button id="flipH" class="primary-btn">
+Flip Horizontal
+</button>
+
+<button id="flipV" class="primary-btn">
+Flip Vertical
+</button>
+
+</div>
+
+<canvas id="canvas"></canvas>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download Image
+</button>
+
+</div>
+
+</main>
+
+<script src="../js/image-flip.js"></script>
+
+</body>
+</html>

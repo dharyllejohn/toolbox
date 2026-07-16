@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GIF to MP4 | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<style>
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:20px 0;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+img,video{
+width:100%;
+margin-top:20px;
+border-radius:10px;
+}
+
+#status{
+margin-top:20px;
+font-weight:bold;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>📼 GIF to MP4</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Convert GIF to MP4</h2>
+
+<p>Convert animated GIF into MP4 video.</p>
+
+<input
+type="file"
+id="gif"
+accept=".gif">
+
+<img id="preview">
+
+<div class="controls">
+
+<button id="convert">
+
+📼 Convert
+
+</button>
+
+</div>
+
+<p id="status">
+
+Ready
+
+</p>
+
+<video id="player" controls></video>
+
+<br><br>
+
+<a id="download" style="display:none">
+
+<button>
+
+⬇ Download MP4
+
+</button>
+
+</a>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+
+<script>
+
+const {FFmpeg}=FFmpegWASM;
+const {fetchFile}=FFmpegUtil;
+
+gif.onchange=()=>{
+
+preview.src=URL.createObjectURL(gif.files[0]);
+
+}
+
+convert.onclick=async()=>{
+
+if(gif.files.length==0){
+
+alert("Select a GIF.");
+
+return;
+
+}
+
+status.innerHTML="Loading FFmpeg...";
+
+const ffmpeg=new FFmpeg();
+
+await ffmpeg.load();
+
+await ffmpeg.writeFile(
+"input.gif",
+await fetchFile(gif.files[0])
+);
+
+status.innerHTML="Converting...";
+
+await ffmpeg.exec([
+"-i",
+"input.gif",
+"output.mp4"
+]);
+
+const data=await ffmpeg.readFile("output.mp4");
+
+const blob=new Blob([data.buffer],{
+type:"video/mp4"
+});
+
+const url=URL.createObjectURL(blob);
+
+player.src=url;
+
+download.href=url;
+
+download.download="converted.mp4";
+
+download.style.display="inline-block";
+
+status.innerHTML="✅ Done";
+
+}
+
+</script>
+
+</body>
+</html>

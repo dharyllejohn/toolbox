@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Barcode Generator | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+<style>
+
+input{
+width:100%;
+padding:12px;
+font-size:16px;
+margin:20px 0;
+border:none;
+border-radius:10px;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:10px;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+}
+
+svg{
+margin-top:30px;
+width:100%;
+background:#fff;
+padding:20px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn"
+onclick="location.href='../index.html'">
+
+← Back
+
+</button>
+
+<h1>🏷️ Barcode Generator</h1>
+
+</header>
+
+<main class="tool-container glass">
+
+<h2>Create Barcode</h2>
+
+<p>Generate Code128 barcodes instantly.</p>
+
+<input
+type="text"
+id="text"
+placeholder="Enter text or numbers">
+
+<div class="controls">
+
+<button onclick="generate()">
+
+Generate Barcode
+
+</button>
+
+</div>
+
+<svg id="barcode"></svg>
+
+</main>
+
+<script>
+
+function generate(){
+
+const value=text.value.trim();
+
+if(value===""){
+
+alert("Enter text.");
+
+return;
+
+}
+
+JsBarcode("#barcode",value,{
+
+format:"CODE128",
+lineColor:"#000",
+width:2,
+height:100,
+displayValue:true
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

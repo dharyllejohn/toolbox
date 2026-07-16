@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brightness & Contrast | ToolBox Pro</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../assets/css/tool.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header class="glass">
+
+<button class="back-btn" onclick="location.href='../index.html'">
+← Back to Tools
+</button>
+
+<h1>☀️ Brightness & Contrast</h1>
+
+<p>Adjust image brightness and contrast.</p>
+
+</header>
+
+<main class="tool-container">
+
+<div class="tool-card">
+
+<input type="file" id="imageInput" accept="image/*">
+
+<label>Brightness</label>
+<input type="range" id="brightness" min="50" max="200" value="100">
+
+<label>Contrast</label>
+<input type="range" id="contrast" min="50" max="200" value="100">
+
+<canvas id="canvas"></canvas>
+
+<button id="downloadBtn" class="primary-btn">
+⬇ Download Image
+</button>
+
+</div>
+
+</main>
+
+<script src="../js/image-brightness.js"></script>
+
+</body>
+</html>
