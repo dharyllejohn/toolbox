@@ -293,3 +293,88 @@ color:white;
 cursor:pointer;
 
 }
+/* ==========================================
+BLOG
+========================================== */
+
+.blog-meta{
+
+display:flex;
+gap:15px;
+align-items:center;
+
+font-size:.9rem;
+
+color:#6b7280;
+
+margin:10px 0 20px;
+
+flex-wrap:wrap;
+
+}
+
+.blog-tag{
+
+display:inline-block;
+
+padding:6px 12px;
+
+background:#2563eb;
+
+color:#fff;
+
+border-radius:999px;
+
+font-size:.8rem;
+
+font-weight:600;
+
+}
+
+.latest-articles{
+
+padding:70px 20px;
+
+}
+
+.latest-articles .card{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.latest-articles .card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.latest-articles h3{
+
+margin-bottom:10px;
+
+}
+
+.latest-articles p{
+
+margin-bottom:20px;
+
+line-height:1.7;
+
+}
+
+.blog-cover{
+
+width:100%;
+
+height:180px;
+
+border-radius:15px;
+
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+margin-bottom:20px;
+
+}
