@@ -1,46 +1,376 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/</loc>
-    <priority>1.0</priority>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
+  <!-- Main Pages -->
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/pages/about.html</loc>
-    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/pages/contact.html</loc>
-    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/pages/privacy-policy.html</loc>
-    <priority>0.8</priority>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/pages/terms.html</loc>
-    <priority>0.8</priority>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
+  <!-- Blog -->
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/blog/</loc>
-    <priority>0.9</priority>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/blog/how-to-create-strong-password.html</loc>
-    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-</urlset>
+  <!-- Free Tools -->
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-compressor.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-resizer.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/pdf-tools.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/text-tools.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/qr-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/password-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/uuid-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/color-picker.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/unit-converter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+    <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/bmi-calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/word-counter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/character-counter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/lorem-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/random-number.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/password-checker.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/timestamp-converter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/url-encoder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/hash-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SEO Tools -->
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/meta-tag-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/sitemap-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/robots-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/open-graph.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/twitter-card.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/slug-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/keyword-density.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/html-minifier.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/css-minifier.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/js-minifier.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+    <!-- PDF Tools -->
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/merge-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/split-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/pdf-to-jpg.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/jpg-to-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/rotate-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/watermark-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/page-number.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/pdf-metadata.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/extract-images.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/organize-pdf.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Image Tools -->
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-rotate.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-flip.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-watermark.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-blur.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-sharpen.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-brightness.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/image-filters.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/color-extractor.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Audio & Video -->
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/audio-cutter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/audio-merger.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/voice-recorder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/video-cutter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/video-merger.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/video-to-gif.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  
