@@ -1,5 +1,4 @@
 console.log("auth.js loaded");
-alert("auth.js loaded");
 
 /* ==========================================
    TOOLBOX PRO AUTH SYSTEM
@@ -14,9 +13,6 @@ function showMessage(text, success = false) {
     msg.style.color = success ? "#22c55e" : "#ef4444";
 }
 
-/* ==========================================
-   LOGIN
-========================================== */
 
 /* ==========================================
    LOGIN
@@ -32,7 +28,7 @@ async function login() {
         return;
     }
 
-    const { data, error } =
+    const { error } =
         await supabaseClient.auth.signInWithPassword({
             email,
             password
@@ -48,7 +44,6 @@ async function login() {
     setTimeout(() => {
         window.location.href = HOME_PAGE;
     }, 1000);
-
 }
 
 
@@ -75,26 +70,22 @@ async function signup() {
         email,
         password,
         options: {
-            emailRedirectTo: "http://127.0.0.1:5500/auth.html"
+            emailRedirectTo: window.location.origin + "/auth.html"
         }
     });
 
     console.log("SIGNUP DATA:", data);
-console.log("SIGNUP ERROR:", error);
+    console.log("SIGNUP ERROR:", error);
 
-if (error) {
-    showMessage(error.message);
-    return;
-}
+    if (error) {
+        showMessage(error.message);
+        return;
+    }
 
-if (data.user) {
-    console.log("User created:", data.user.id);
-}
-
-showMessage(
-    "✅ Account created successfully! You can now log in.",
-    true
-);
+    showMessage(
+        "✅ Account created successfully! Check your email.",
+        true
+    );
 }
 
 
@@ -106,29 +97,41 @@ async function forgotPassword() {
 
     const email = document.getElementById("email").value.trim();
 
-    console.log("Origin:", window.location.origin);
-
     if (!email) {
         showMessage("Please enter your email first.");
         return;
     }
 
-    const redirectUrl = window.location.origin + "/pages/reset-password.html";
 
-    console.log("Redirect URL:", redirectUrl);
+    const redirectUrl =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
 
-    const { error } = await supabaseClient.auth.resetPasswordForEmail(
-        email,
-        {
-            redirectTo: redirectUrl
-        }
-    );
+        ? "http://127.0.0.1:5500/pages/reset-password.html"
+
+        : "https://toolbox-wheat-seven.vercel.app/pages/reset-password.html";
+
+
+    console.log("Password Reset URL:", redirectUrl);
+
+
+    const { error } =
+        await supabaseClient.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo: redirectUrl
+            }
+        );
+
 
     if (error) {
+
         showMessage(error.message);
         console.error(error);
         return;
+
     }
+
 
     showMessage(
         "✅ Password reset link has been sent to your email.",
@@ -156,13 +159,15 @@ async function logout() {
 
 async function checkAuth() {
 
-    const { data, error } = await supabaseClient.auth.getSession();
+    const { data, error } =
+        await supabaseClient.auth.getSession();
 
     console.log("SESSION DATA:", data);
     console.log("SESSION ERROR:", error);
 
-    // HUWAG MUNA MAG REDIRECT
 }
+
+
 window.addEventListener(
     "DOMContentLoaded",
     checkAuth
