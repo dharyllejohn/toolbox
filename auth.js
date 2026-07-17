@@ -80,14 +80,15 @@ async function signup() {
     });
 
     console.log("SIGNUP DATA:", data);
-    console.log("SIGNUP ERROR:", error);
+console.log("SIGNUP ERROR:", error);
 
-    if (data.user) {
+if (error) {
+    showMessage(error.message);
+    return;
+}
 
+if (data.user) {
     console.log("User created:", data.user.id);
-
-    // Kung gumagamit ka na ng trigger, wala nang insert dito
-
 }
 
 showMessage(
@@ -103,34 +104,36 @@ showMessage(
 
 async function forgotPassword() {
 
-    const email =
-        document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    console.log("Origin:", window.location.origin);
 
     if (!email) {
-        showMessage("Enter your email first.");
+        showMessage("Please enter your email first.");
         return;
     }
 
-    const { error } =
-        await supabaseClient.auth.resetPasswordForEmail(
-            email,
-            {
-                redirectTo:
-                    window.location.origin +
-                    "/reset-password.html"
-            }
-        );
+    const redirectUrl = window.location.origin + "/pages/reset-password.html";
+
+    console.log("Redirect URL:", redirectUrl);
+
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        {
+            redirectTo: redirectUrl
+        }
+    );
 
     if (error) {
         showMessage(error.message);
+        console.error(error);
         return;
     }
 
     showMessage(
-        "Password reset email sent.",
+        "✅ Password reset link has been sent to your email.",
         true
     );
-
 }
 
 
