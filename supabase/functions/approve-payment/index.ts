@@ -71,18 +71,18 @@ serve(async (req) => {
       );
     }
 
-    // Expire after 30 days
-    const expire = new Date();
-    expire.setDate(expire.getDate() + 30);
+  // Expire after 30 days
+const expire = new Date();
+expire.setDate(expire.getDate() + 30);
 
-    // Upgrade user
-    const { error: profileError } = await supabase
-      .from("profiles")
-      .update({
-        is_pro: true,
-        pro_expire: expire.toISOString(),
-      })
-      .eq("id", payment.user_id);
+// Upgrade user
+const { error: profileError } = await supabase
+  .from("profiles")
+  .update({
+    is_pro: true,
+    pro_expire: expire.toISOString().split("T")[0],
+  })
+  .eq("id", payment.user_id);
 
     if (profileError) {
       return new Response(

@@ -1,76 +1,72 @@
-const fileInput = document.getElementById("pdfFile");
-const textInput = document.getElementById("watermarkText");
-const fontSize = document.getElementById("fontSize");
-const opacity = document.getElementById("opacity");
-const colorPicker = document.getElementById("color");
-const button = document.getElementById("watermarkBtn");
+const { PDFDocument, rgb, degrees, StandardFonts } = PDFLib;
 
-button.addEventListener("click", async () => {
+document.getElementById("watermarkBtn").addEventListener("click", async () => {
 
-    if (!fileInput.files.length) {
+    try {
 
-        alert("Select a PDF first.");
+        const file = document.getElementById("pdfFile").files[0];
 
-        return;
+        if (!file) {
+            alert("Please select a PDF.");
+            return;
+        }
 
-    }
+        const text = document.getElementById("watermarkText").value || "CONFIDENTIAL";
+        const fontSize = Number(document.getElementById("fontSize").value);
+        const opacity = Number(document.getElementById("opacity").value);
 
-    const file = fileInput.files[0];
+        const color = document.getElementById("color").value;
 
-    const bytes = await file.arrayBuffer();
+        const r = parseInt(color.slice(1,3),16)/255;
+        const g = parseInt(color.slice(3,5),16)/255;
+        const b = parseInt(color.slice(5,7),16)/255;
 
-    const pdfDoc = await PDFLib.PDFDocument.load(bytes);
+        const pdfBytes = await file.arrayBuffer();
 
-    const pages = pdfDoc.getPages();
+        const pdfDoc = await PDFDocument.load(pdfBytes);
 
-    const text = textInput.value || "CONFIDENTIAL";
+        const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-    const hex = colorPicker.value.replace("#", "");
+        const pages = pdfDoc.getPages();
 
-    const r = parseInt(hex.substring(0,2),16)/255;
-    const g = parseInt(hex.substring(2,4),16)/255;
-    const b = parseInt(hex.substring(4,6),16)/255;
+        for (const page of pages) {
 
-    for(const page of pages){
+            const { width, height } = page.getSize();
 
-        const {width,height}=page.getSize();
+            const textWidth = font.widthOfTextAtSize(text, fontSize);
 
-        page.drawText(text,{
+            page.drawText(text,{
+                x:(width-textWidth)/2,
+                y:height/2,
+                font,
+                size:fontSize,
+                rotate:degrees(45),
+                color:rgb(r,g,b),
+                opacity
+            });
 
-            x:width/5,
+        }
 
-            y:height/2,
+        const result = await pdfDoc.save();
 
-            size:Number(fontSize.value),
-
-            rotate:PDFLib.degrees(45),
-
-            color:PDFLib.rgb(r,g,b),
-
-            opacity:Number(opacity.value)
-
+        const blob = new Blob([result],{
+            type:"application/pdf"
         });
 
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "watermarked.pdf";
+        a.click();
+
+        URL.revokeObjectURL(url);
+
+    } catch(err){
+
+        console.error(err);
+        alert(err);
+
     }
-
-    const pdfBytes=await pdfDoc.save();
-
-    const blob=new Blob([pdfBytes],{
-
-        type:"application/pdf"
-
-    });
-
-    const url=URL.createObjectURL(blob);
-
-    const a=document.createElement("a");
-
-    a.href=url;
-
-    a.download="watermarked.pdf";
-
-    a.click();
-
-    URL.revokeObjectURL(url);
 
 });

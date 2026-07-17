@@ -133,23 +133,27 @@ async function loadUser(user){
 
     if(profile.is_pro){
 
-        accountType.innerHTML="PRO";
+    accountType.innerHTML = "PRO";
 
-        subscriptionStatus.innerHTML="Active";
+    subscriptionStatus.innerHTML = "Active";
 
-        planText.innerHTML="PRO";
+    planText.innerHTML = "PRO";
 
-        proBadge.innerHTML="⭐ PRO USER";
+    proBadge.innerHTML = "⭐ PRO USER";
 
-        planName.innerHTML="PRO PLAN";
+    planName.innerHTML = "PRO PLAN";
 
-        planDescription.innerHTML=
+    const expireDate = profile.pro_expire
+        ? new Date(profile.pro_expire).toLocaleDateString()
+        : "No Expiration";
 
-        "You have unlimited access to all ToolBox Pro features.";
+    planDescription.innerHTML =
+        "You have unlimited access to all ToolBox Pro features.<br><br>" +
+        "<b>Expires:</b> " + expireDate;
 
-        upgradeButton.style.display="none";
+    upgradeButton.style.display = "none";
 
-    }
+}
 
     else{
 
