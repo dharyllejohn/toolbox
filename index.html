@@ -62,8 +62,8 @@ content="ToolBox Pro, PDF Tools, Image Compressor, Image Resizer, JSON Formatter
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="config.js"></script>
-<script src="utils.js"></script>
+<script src="config.js" defer></script>
+<script src="utils.js" defer></script>
 
 </head>
 
@@ -2625,26 +2625,24 @@ const sendChat=document.getElementById("sendChat");
 const chatInput=document.getElementById("chatInput");
 const chatMessages=document.getElementById("chatMessages");
 
-chatToggle.onclick=()=>{
+if (chatToggle && chatBox && sendChat && chatInput && chatMessages) {
+    chatToggle.onclick = () => {
+        chatBox.style.display =
+            chatBox.style.display === "block"
+                ? "none"
+                : "block";
+    };
 
-chatBox.style.display=
-chatBox.style.display==="block"
-?"none"
-:"block";
-
-};
-
-sendChat.onclick=sendMessage;
-
-chatInput.addEventListener("keypress",e=>{
-
-if(e.key==="Enter"){
-
-sendMessage();
-
+    sendChat.onclick = sendMessage;
 }
 
-});
+if (chatInput) {
+    chatInput.addEventListener("keypress", e => {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    });
+}
 
 function sendMessage(){
 
