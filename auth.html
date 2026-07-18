@@ -1,102 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
 
-<style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
-color:white;
-}
+<title>ToolBox Pro Login</title>
 
-.box{
-width:320px;
-background:rgba(255,255,255,.1);
-backdrop-filter:blur(15px);
-padding:30px;
-border-radius:20px;
-text-align:center;
-}
+<link rel="stylesheet" href="css/auth.css">
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-box-sizing:border-box;
-}
+</head>
 
-button{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:none;
-border-radius:10px;
-background:#2563eb;
-color:white;
-cursor:pointer;
-font-size:16px;
-}
 
-button:hover{
-background:#1d4ed8;
-}
-
-a{
-color:#93c5fd;
-text-decoration:none;
-}
-
-#msg{
-margin-top:15px;
-font-size:14px;
-}
-</style>
 
 </head>
 
 <body>
 
+<div id="galaxy"></div>
+
+<div class="stars"></div>
+
+<div class="auth-container">
+
+    <!-- LEFT SIDE -->
+    <div class="branding">
+
+    <div class="logo">
+        <div class="logo-circle">
+            <img src="favicon.png" alt="ToolBox Pro">
+        </div>
+
+        <h1>ToolBox Pro</h1>
+
+        <p>Developer & Productivity Suite</p>
+
+        <p class="tagline">
+            Everything you need in one toolbox.
+        </p>
+    </div>
+
+</div>
+
+<!-- RIGHT SIDE -->
 <div class="box">
 
-<h2>🔐 Login</h2>
+        <div class="card-header">
 
-<input id="email" type="email" placeholder="Email">
-<input id="password" type="password" placeholder="Password">
+            <h2>Welcome Back</h2>
 
-<button onclick="login()">Login</button>
+            <p>Sign in to continue your account.</p>
 
-<button onclick="signup()">Sign Up</button>
+        </div>
 
-<div style="margin-top:15px;text-align:right;">
-<a href="#" onclick="forgotPassword();return false;"
-style="color:#93c5fd;font-size:14px;">
-Forgot Password?
-</a>
+        <div class="form-group">
+
+            <label for="email">Email Address</label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter your email">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="password">Password</label>
+
+            <div class="password-wrapper">
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Enter your password">
+
+    <button
+        type="button"
+        class="toggle-password"
+        onclick="togglePassword()">
+        👁
+    </button>
+
 </div>
 
-<p id="msg"></p>
+        </div>
+
+        <div class="forgot">
+            <a href="#" onclick="forgotPassword();return false;">
+                Forgot Password?
+            </a>
+        </div>
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <button class="signup-btn" onclick="signup()">
+            Create Account
+        </button>
+
+        <p id="msg"></p>
+
+    </div>
 
 </div>
 
-<!-- Supabase -->
+<div class="credit">
+    Designed &amp; Developed by<br>
+    <strong>Daryl John</strong>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- Config -->
 <script src="config.js"></script>
-
-<!-- Auth -->
 <script src="auth.js"></script>
 
+<script>
+function togglePassword(){
+    const input=document.getElementById("password");
+    input.type=input.type==="password"?"text":"password";
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/galaxy.js"></script>
+
 </body>
-</html>
