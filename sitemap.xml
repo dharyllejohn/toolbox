@@ -34,12 +34,7 @@
 </url>
 
   <!-- Blog -->
-  <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
+  
   <url>
     <loc>https://toolbox-wheat-seven.vercel.app/blog/how-to-create-strong-password.html</loc>
     <changefreq>monthly</changefreq>
@@ -338,7 +333,7 @@
   <!-- Audio & Video -->
 
   <url>
-    <loc>https://toolbox-wheat-seven.vercel.app/pages/audio-cutter</loc>
+    <loc>https://toolbox-wheat-seven.vercel.app/pages/audio-cutter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
