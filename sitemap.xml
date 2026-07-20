@@ -34,12 +34,12 @@
 </url>
 
   <!-- Blog -->
-  
-  <url>
+
+<url>
     <loc>https://toolbox-wheat-seven.vercel.app/blog/how-to-create-strong-password.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+</url>
 
   <!-- Free Tools -->
   <url>
